@@ -1,0 +1,33 @@
+/* Use this file to override styles in the drposter template.
+ * 
+ * Improve poster maintainability by keeping the resources separate
+ * from the package, and user styles separated from the overall package.
+ */
+
+.slides > header {
+	/* If the background is a complex image, then an overlay may be necessary: */
+	background: black;
+	border-radius: var(--block-padding);
+	border: 0.25cm solid var(--header-color);
+	background-image: url("img/mpic-logo-white.png"), url("img/r-chem.png");
+	background-position: 3% 50%, 97% -200%; 
+    background-size: 350px, 350px;
+    background-color: #0B5282;
+	background-repeat: no-repeat;
+	color: white;
+}
+
+:root {
+	--header-color: #0B5282;
+}
+
+/******** Default theme, including the background gradients ********/
+:root {
+	--other-color-for-h2-gradient: white;
+}
+
+.title {
+	font-size: 2.5cm;
+	color: white;
+}
+

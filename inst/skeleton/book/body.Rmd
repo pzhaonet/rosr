@@ -1,0 +1,75 @@
+
+# Introduction
+
+This template comes from the R 'bookdownplus' package and modified by Peng Zhao. It intends to show how to cross refer other files in a 'rosr' project, rather than to show how to use the 'bookdownplus' template or the 'bookdown' package.
+.
+
+
+# Methods
+
+## Set up
+
+Firstly, we switch off the codes and message display in a manuscript, and set the working directory to the rosr project.
+
+```{r setup}
+oldwd <- getwd()
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE) 
+knitr::opts_knit$set(root.dir = dirname(oldwd))
+```
+
+## Load data
+
+Now we can use the relative path. Let's sync the bib file and run an R script.
+
+```{r load, results='hide'}
+file.copy('bib/rosr.bib', paste0(oldwd, '/bib/rosr.bib'))
+source('R/rosr.R')
+```
+
+## Cite
+
+Here we cite something like this:
+
+Many R packages have been developed recently [@R-pinyin; @R-beginr; @R-bookdownplus; @R-mindr; @R-rmd; @R-steemr].
+
+# Results and Discussions
+
+## Numbers
+
+As we just ran the `source()` command, we can use the results from the `R/rosr.R`. For example, the mean temperature is `r temperature` degree.
+
+## Tables
+
+We could insert a table as in Table \@ref(tab:tab-lab).
+
+```{r tab-lab}
+knitr::kable(head(aq), booktabs = TRUE, caption = 'Air quality data.')
+```
+
+## Figures
+
+Plot the data in a diagram as shown in Fig. \@ref(fig:fig-lab).
+
+```{r fig-lab, fig.cap='Air quality data.', out.width='100%'}
+plot(aq)
+```
+
+We could insert an image like Fig \@ref(fig:img-lab).
+
+```{r img-lab, fig.cap='Insert an image.', out.width='100%'}
+knitr::include_graphics(paste0(getwd(), '/image/rosr_R.png'))
+```
+
+
+## Equations
+
+Use the `rosr::eq()` function to insert an equation. See Eq. \@ref(eq:sd)
+
+```{r, results='asis'}
+eqs <- 'equation/rosr-eq.Rmd'
+rosr::eq(eqs, label = 'sd')
+```
+
+# Conclusions
+
+The conclusion goes here.

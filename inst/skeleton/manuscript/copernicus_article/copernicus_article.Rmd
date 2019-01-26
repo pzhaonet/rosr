@@ -1,0 +1,143 @@
+---
+title: Template for using R 'rticle' package in a 'rosr' project
+journal: "`r rticles::copernicus_journal_abbreviations(journal_name = 'communication')`"
+author:
+  - given_name: Peng
+    surname: Zhao
+    affiliation: 1
+    email: pzhao@pzhao.net
+    corresponding: true
+  - given_name: Someone
+    surname: Else
+    affiliation: 2
+    email: someone.else@pzhao.net
+affiliation:
+  - code: 1
+    address: Max Planck Institute for Chemistry, 55128 Mainz, Germany
+  - code: 2
+    address: University of Far Far Away
+abstract: |
+  The abstract goes here.
+  It can also be on _multiple lines_.
+bibliography: rosr.bib
+running:
+  title: rosr for Copernicus
+  author: Zhao et al.
+# This section is mandatory even if you declare that no competing interests are present.
+competinginterests: |
+  The authors declare no competing interests.
+# OPTIONAL:
+algorithms: true
+# See https://publications.copernicus.org/for_authors/licence_and_copyright.html, normally used for transferring the copyright, if needed.
+copyrightstatement: |
+  The author's copyright for this publication is transferred to institution/company.
+### The following commands are for the statements about the availability of data sets and/or software code corresponding to the manuscript.
+### It is strongly recommended to make use of these sections in case data sets and/or software code have been part of your research the article is based on.
+availability:
+  #code: |
+  #  use this to add a statement when having only software code available
+  #data: |
+  #  use this to add a statement when having only data sets available
+  codedata: |
+    use this to add a statement when having data sets and software code available
+authorcontribution: |
+  Peng Zhao did everything. Someone Else did nothing.
+disclaimer: |
+  We like rosr.
+acknowledgements: |
+  Thanks to the rticles contributors!
+appendix: |
+  \section{Figures and tables in appendices}
+  Regarding figures and tables in appendices, the following two options are possible depending on your general handling of figures and tables in the manuscript environment:
+  \subsection{Option 1}
+  If you sorted all figures and tables into the sections of the text, please also sort the appendix figures and appendix tables into the respective appendix sections.
+  They will be correctly named automatically.
+  \subsection{Option 2}
+  If you put all figures after the reference list, please insert appendix tables and figures after the normal tables and figures.
+  
+  To rename them correctly to A1, A2, etc., please add the following commands in front of them:
+  `\appendixfigures` needs to be added in front of appendix figures
+  `\appendixtables` needs to be added in front of appendix tables
+  
+  Please add `\clearpage` between each table and/or figure. Further guidelines on figures and tables can be found below.
+output:
+  rticles::copernicus_article:
+    base_format: bookdown::pdf_document2
+    includes: 
+      in_header: "preamble.tex"
+---
+
+
+\introduction
+
+This template comes from the R 'rticles' package and modified by Peng Zhao. It intends to show how to cross refer other files in a 'rosr' project, rather than to show how to use the 'rticles' template.
+
+
+# Methods
+
+## Set up
+
+Firstly, we switch off the codes and message display in a manuscript, and set the working directory to the rosr project.
+
+```{r setup}
+oldwd <- getwd()
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE) 
+knitr::opts_knit$set(root.dir = dirname(dirname(oldwd)))
+```
+
+## Load data
+
+Now we can use the relative path. Let's sync the bib file and run an R script.
+
+```{r load, results='hide'}
+file.copy('bib/rosr.bib', oldwd)
+source('R/rosr.R')
+```
+
+## Cite
+
+Here we cite something like this:
+
+Many R packages have been developed recently [@R-pinyin; @R-beginr; @R-bookdownplus; @R-mindr; @R-rmd; @R-steemr].
+
+# Results and Discussions
+
+## Numbers
+
+As we just ran the `source()` command, we can use the results from the `R/rosr.R`. For example, the mean temperature is `r temperature` degree.
+
+## Tables
+
+We could insert a table as in Table \@ref(tab:tab-lab).
+
+```{r tab-lab}
+knitr::kable(head(aq), booktabs = TRUE, caption = 'Air quality data.')
+```
+
+## Figures
+
+Plot the data in a diagram as shown in Fig. \@ref(fig:fig-lab).
+
+```{r fig-lab, fig.cap='Air quality data.'}
+plot(aq)
+```
+
+We could insert an image like Fig \@ref(fig:img-lab).
+
+```{r img-lab, fig.cap='Insert an image.'}
+knitr::include_graphics(paste0(getwd(), '/image/rosr_R.png'))
+```
+
+## Equations
+
+Use the `rosr::eq()` function to insert an equation. See Eq. \@ref(eq:sd)
+
+```{r, results='asis'}
+eqs <- 'equation/rosr-eq.Rmd'
+rosr::eq(eqs, label = 'sd')
+```
+
+\conclusions
+
+The conclusion goes here.
+You can modify the section name with  `\conclusions[modified heading if necessary]`.

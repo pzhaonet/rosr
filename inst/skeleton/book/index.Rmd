@@ -1,0 +1,20 @@
+--- 
+title: Template for using R 'bookdown' package in a 'rosr' project
+author: "Peng Zhao"
+date: "2019/01/14 (updated: `r Sys.Date()`)"
+output: 
+  bookdown::pdf_book:
+    includes:
+      in_header: tex/template_yihui_demo.tex
+    latex_engine: xelatex
+    citation_package: natbib
+    keep_tex: yes
+bibliography: [bib/rosr.bib]
+biblio-style: apalike
+link-citations: yes
+colorlinks: no  
+# toc: no
+lot: no
+lof: no
+site: bookdown::bookdown_site
+---

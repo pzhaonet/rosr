@@ -1,0 +1,10 @@
+---
+title: "Equation Sheet"
+author: "Peng Zhao"
+output: html_document
+---
+
+| number |   label   |        description      | eq  |
+| ------ | --------- | ----------------------- | --- |
+| 1      | em       | mass-energy equivalence | $F =  mc^2$ |
+| 2      | sd        | standard deviation      | $$ \begin{aligned}\sigma & = \exp(\sqrt{\frac{\sum_{i = 1}^{n} (\ln \frac{x_i}{G})^2)}{n}})\\ & = \text e ^ {\sqrt{\frac{\sum_{i = 1}^{n} (\ln \frac{x_i}{G})^2)}{n}}}\end{aligned} $$ |

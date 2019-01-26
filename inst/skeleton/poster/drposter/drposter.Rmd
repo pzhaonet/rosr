@@ -1,0 +1,94 @@
+---
+title: "A drposter template for the rosr project"
+author: ["<span class=\"presenter\">Peng Zhao<sup>1</sup></span>, Someone Else<sup>1, 2</sup><ol class=\"affiliations\"><li>Max Planck Institute for Chemistry, Mainz, Germany</li><li>Far Far Away</li></ol>"]
+output:
+  drposter::drposter_poster:
+    self_contained: false
+    css: custom.css
+---
+
+
+# {.col-2}
+
+## Introduction
+
+This template comes from the R 'drposter' package and modified by Peng Zhao. It intends to show how to cross refer other files in a 'rosr' project, rather than to show how to use the 'drposter' template.
+
+## Set up
+
+Firstly, we switch off the codes and message display, and set the working directory to the rosr project.
+
+```{r setup, include=TRUE}
+oldwd <- getwd()
+knitr::opts_chunk$set(echo = FALSE, 
+                      message = FALSE, 
+                      warning = FALSE, 
+                      signif = 3)
+knitr::opts_knit$set(root.dir = 
+                       dirname(dirname(oldwd)))
+```
+
+## Load data
+
+Now we can use the relative path. Let's sync the bib file and run an R script.
+
+```{r load, results='hide', echo=TRUE}
+source('R/rosr.R')
+```
+
+## Results and Discussions
+
+### Numbers
+
+As we just ran the `source()` command, we can use the results from the `R/rosr.R`. For example, the mean temperature is `r temperature` degree.
+
+### Tables
+
+
+```{r}
+aq$Month <- as.factor(aq$Month)
+DT::datatable(
+  aq, 
+  fillContainer = FALSE, options = list(pageLength = 4)
+)
+```
+
+## Equations
+
+Use the `rosr::eq()` function to insert an equation. See Eq. \@ref(eq:sd)
+
+```{r, results='asis'}
+eqs <- 'equation/rosr-eq.Rmd'
+rosr::eq(eqs, label = 'sd')
+```
+
+# {.col-2}
+
+
+## Plot
+
+```{r fig1, fig.cap='Plot a diagram.'}
+plot(aq)
+```
+
+## Insert an image
+
+
+```{r fig2, fig.cap='Insert an image.'}
+knitr::include_graphics(paste0(getwd(), '/image/rosr_R.png'))
+```
+
+
+# {.col-2}
+
+## Contact {style="--header-color:darkred; --other-color-for-h2-gradient:red;"}
+
+&#9993; pzhao\@pzhao.net. 
+
+
+# {.col-2}
+
+## Acknowledgements
+
+Many thanks to Ben Bucior for developing [drposter](https://github.com/bbucior/drposter).
+
