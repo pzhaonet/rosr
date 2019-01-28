@@ -1,7 +1,5 @@
 # rosr: Create academic R markdown projects for open science and reproducible research
 
- ![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/rosr)
-
 ## Introduction
 
 
@@ -24,12 +22,8 @@ require('rosr')
 ### Create a project
 
 ```R
-create()
+rosr_new
 ```
-
-## Updates
-
-- 2019-01-13. **v0.0.0**. Initialization.
 
 # License
 
