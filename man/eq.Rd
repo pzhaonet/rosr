@@ -5,14 +5,18 @@
 \title{Insert an equation.}
 \usage{
 eq(eqs = NULL, label = NULL, number = NULL, style = c("numbered", "display", "inline", 
-    "none"))
+    "none"), skip = 6)
 }
 \arguments{
+\item{eqs}{Character. The path to the equation text file, or a data frame of the equations.}
+
 \item{label}{Character. The label of the equation.}
 
 \item{number}{integer. The number of the equation.}
 
-\item{eq_df}{Character. The path to the equation text file, or a data frame of the equations.}
+\item{style}{character. The style of the equation.}
+
+\item{skip}{integer. nteger: the number of lines of the data file to skip before beginning to read data.}
 }
 \value{
 A string of the equation.

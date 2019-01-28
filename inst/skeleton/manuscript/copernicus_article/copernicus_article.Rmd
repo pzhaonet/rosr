@@ -67,6 +67,18 @@ output:
       in_header: "preamble.tex"
 ---
 
+```{r md-hint, include=FALSE}
+# Markdown Syntax
+
+# - *italic*, **bold**, `code`, ~subscript~, ^superscript^, > quote, ^[footnote]
+# - $inline equation$, $$display equation$$
+# - \begin{equation} (\#eq:eq-label)\end(equation), \@ref(eq:eq-label)
+# - [@bib-entry1; @bib-entry2]
+# - [](hyperlink)
+# - ![](image link), knitr::include_graphics(), \@ref(fig:fig1)
+# - knitr::kable(), \@ref(tab:tab1)
+```
+
 
 \introduction
 

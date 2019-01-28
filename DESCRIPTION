@@ -1,5 +1,5 @@
 Package: rosr
-Version: 0.0.0
+Version: 0.0.1
 Date: 2019-01-13
 Title: R, Open Science, and Reproducible Research
 Authors@R: c(

@@ -47,4 +47,4 @@ dev.off()
 #= ## Create an Rmd file ----
 #' Now we convert this script into an Rmd file, which you can later open and knit into a document.
 #+ rmd, eval = FALSE
-mindr::mm('R/rosr.R', 'manuscript/rosr_R.Rmd')
+# mindr::mm('R/rosr.R', 'manuscript/rosr_R.Rmd')
