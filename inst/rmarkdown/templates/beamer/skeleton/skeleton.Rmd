@@ -1,5 +1,9 @@
 ---
+
 title: Template for using R 'xaringan' package in a 'rosr' project
+subtitle: "with xaringan"
+author: "Peng Zhao"
+date: "2019/01/14 (updated: `r Sys.Date()`)"
 output: beamer_presentation
 always_allow_html: yes
 ---
