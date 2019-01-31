@@ -31,7 +31,7 @@ options(htmltools.dir.version = FALSE)
 
 # Introduction
 
-This template comes from the R 'xaringan' package and modified by Peng Zhao. It intends to show how to cross refer other files in a 'rosr' project, rather than to show how to use the 'xaringan' template.
+This template comes from the R 'xaringan' package and modified by Peng Zhao. It intends to show how to cross refer other files in a 'rosr' project, rather than to show how to use the original template.
 
 ---
 

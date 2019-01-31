@@ -33,7 +33,7 @@ Firstly, we set the codes and message display, and set the working directory to 
 ```{r setup}
 oldwd <- getwd()
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE) 
-knitr::opts_knit$set(root.dir = dirname(dirname(dirname(oldwd))))
+knitr::opts_knit$set(root.dir = dirname(dirname(dirname(dirname(oldwd)))))
 ```
 
 ## Load data
@@ -80,7 +80,7 @@ plot(aq)
 We could insert an image like Fig \@ref(fig:img-lab).
 
 ```{r}
-file.copy(dir('image/', full.names = TRUE), 'website/static/image/', recursive = TRUE, overwrite = TRUE)
+file.copy(dir('image/', full.names = TRUE), file.path(dirname(dirname(oldwd)), 'static', 'image'), recursive = TRUE, overwrite = TRUE)
 ```
 
 ```{r img-lab, fig.cap='Insert an image.'}

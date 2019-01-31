@@ -1,0 +1,4 @@
+Name: Create a rosr project
+Description: Create a interconnected R Markdown project for reproducible research
+Binding: create_ui
+Interactive: true

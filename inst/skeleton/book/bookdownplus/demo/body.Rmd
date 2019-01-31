@@ -10,10 +10,10 @@ This template comes from the R 'bookdownplus' package and modified by Peng Zhao.
 
 Firstly, we switch off the codes and message display in a manuscript, and set the working directory to the rosr project.
 
-```{r setup}
+```{r set}
 oldwd <- getwd()
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE) 
-knitr::opts_knit$set(root.dir = dirname(oldwd))
+knitr::opts_knit$set(root.dir = dirname(dirname(oldwd)))
 ```
 
 ## Load data
@@ -49,7 +49,7 @@ knitr::kable(head(aq), booktabs = TRUE, caption = 'Air quality data.')
 
 Plot the data in a diagram as shown in Fig. \@ref(fig:fig-lab).
 
-```{r fig-lab, fig.cap='Air quality data.', out.width='100%'}
+```{r fig-lab, fig.cap='Air quality data.'}
 plot(aq)
 ```
 

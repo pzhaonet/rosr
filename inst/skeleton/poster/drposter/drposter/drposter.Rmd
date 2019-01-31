@@ -24,7 +24,7 @@ output:
 
 ## Introduction
 
-This template comes from the R 'drposter' package and modified by Peng Zhao. It intends to show how to cross refer other files in a 'rosr' project, rather than to show how to use the 'drposter' template.
+This template comes from the R 'drposter' package and modified by Peng Zhao. It intends to show how to cross refer other files in a 'rosr' project, rather than to show how to use the original template.
 
 ## Set up
 
