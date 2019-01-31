@@ -4,8 +4,6 @@
 #'
 #' @return a new string.
 rm_space <- function(string){
-  # newstring <- gsub('^[[:space:]]*', '', string)
-  # gsub('[[:space:]]*$', '', newstring)
   gsub("^[[:space:]]*|[[:space:]]*$", "", string)
 }
 

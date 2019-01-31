@@ -3,6 +3,7 @@
 #' @param to the destination directory
 #'
 #' @return an empty directory
+#' @importFrom utils install.packages read.table unzip write.csv
 #' @export
 #'
 #' @examples
@@ -59,7 +60,7 @@ create_bib <- function(to = getwd()){
 #' }
 create_data <- function(to = getwd()){
   create_dir(to)
-  write.csv(airquality, paste0(to, '/rosr.csv'), row.names = FALSE)
+  write.csv(datasets::airquality, paste0(to, '/rosr.csv'), row.names = FALSE)
 }
 
 #' Create a demo .R script
@@ -156,6 +157,7 @@ create_rmd <- function(to = 'manuscript',
                        if_render = TRUE,
                        package = 'rticles'
                        ){
+  # create a draft
   create_dir(to)
   rmd_dir <- paste0(to, '/', template)
   rmarkdown::draft(file = rmd_dir,
@@ -163,6 +165,8 @@ create_rmd <- function(to = 'manuscript',
                    package = package,
                    create_dir = TRUE,
                    edit = FALSE)
+
+  # rticles: replace the biblography and the base_format
   if(package == 'rticles2'){
     template_old <- readLines(file.path(rmd_dir, paste0(template, '.Rmd')))
     yaml_old <- get_yaml(template_old)
@@ -197,18 +201,21 @@ create_rmd <- function(to = 'manuscript',
     writeLines(template_new, rmd_new, useBytes = TRUE)
   }
 
+  # manuscript package
   if(package == 'rticles')
     rmd_new <- copy_rmd(package = package,
                         template = template,
                         sub_project = 'manuscript',
                         rmd_dir = rmd_dir)
 
+  # poster packages
   if(package == 'drposter' | package == 'pagedown')
     rmd_new <- copy_rmd(package = package,
                         template = template,
                         sub_project = 'poster',
                         rmd_dir = rmd_dir)
 
+  # slide packages. rosr only has slide templates.
   if(package == 'xaringan' | package == 'rosr')
     rmd_new <- copy_rmd(package = package,
                         template = template,
@@ -252,6 +259,7 @@ create_book <- function(to = getwd(),
                         template = template,
                         sub_project = 'book',
                         rmd_dir = bookdir)
+    ## replace the body.Rmd and bib file
     # oldbib <- paste0(bookdir, '/bib/bib.bib')
     # if(file.exists(oldbib)) file.remove(oldbib)
     # my_template <- file.path(system.file(package = 'rosr'),
@@ -278,7 +286,6 @@ create_book <- function(to = getwd(),
 #'
 #' @param theme the name of the r blogdown theme.
 #' @param to the desnitation directory
-#' @param if_render whether render it.
 #' @param oldwd set the working directory aftering rendering the book
 #'
 #' @return copied file.
@@ -298,9 +305,7 @@ create_website <- function(to = getwd(),
   create_dir(webdir)
   blogdown::new_site(dir = webdir,
                      serve = FALSE,
-                     # sample = FALSE,
                      theme = theme)
-  # setwd(webdir)
   my_template = paste(system.file(package = 'rosr'),
                       'skeleton', 'website',
                       theme_rename, 'content', sep = '/')
@@ -311,9 +316,6 @@ create_website <- function(to = getwd(),
   }
   rproj <- paste0(system.file(package = 'rosr'), '/skeleton/rproj')
   file.copy(rproj, file.path(webdir, '-blogdown.Rproj'))
-  # if(if_render) {
-  #   blogdown::serve_site()
-  # }
 }
 
 
