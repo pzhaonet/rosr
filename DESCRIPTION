@@ -1,7 +1,7 @@
 Package: rosr
-Version: 0.0.1
-Date: 2019-01-13
-Title: R, Open Science, and Reproducible Research
+Version: 0.0.2
+Date: 2019-01-29
+Title: Create Reproducible Research Projects
 Authors@R: c(
     person("Peng", "Zhao", role = c("aut", "cre"), email = "pzhao@pzhao.net")
   )
@@ -9,30 +9,20 @@ Maintainer: Peng Zhao <pzhao@pzhao.net>
 Depends: R (>= 3.1.0)
 Imports: 
   rmarkdown,
-  knitr,
   bookdown, 
   blogdown, 
-  rticles,
   tinytex,
-  xaringan, 
-  citr,
   mindr, 
   bookdownplus,
-  magrittr,
-  crayon,
-  utils,
   rstudioapi,
-  purrr,
-  tibble,
-  tools,
-  cli,
-  dplyr,
-  grDevices
+  htmlwidgets,
+  shiny,
+  devtools
 Suggests:
-Description: The 'rmd' package manages multiple R markdown packages. These R markdown packages include currently 'rmarkdown', 'knitr', 'bookdown', 'bookdownplus', 'blogdown', 'rticles',  'tinytex', 'xaringan', 'citr',  and 'mindr'. They can be installed and loaded in a single step with the 'rmd' package. The conflicts between these packages are evaluated as well.
+Description: The 'rosr' package create reproducible academic projects with integrated various academic elements, including datasets, references, codes, images, manuscripts, dissertations, slides and so on. These elements are well connected so that they can be easily synchronized and updated. 
 License: GPL-3 | file LICENSE
-URL: https://github.com/pzhaonet/rmd
-BugReports: https://github.com/pzhaonet/rmd/issues
+URL: https://github.com/pzhaonet/rosr
+BugReports: https://github.com/pzhaonet/rosr/issues
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 NeedsCompilation: no
