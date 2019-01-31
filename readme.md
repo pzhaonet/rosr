@@ -2,28 +2,32 @@
 
 ## Introduction
 
+'rosr' is an R package for creating reproducible academic project with integrated various academic elements, including data, bibliography, codes, images, manuscripts, dissertations, slides and so on. These elements are well connected so that they can be easily synchronized and updated. Users don't have to repeat copying and pasting their results and figures from time to time. It will be easy for the scientific researchers to use, even if they are R beginners, or even non-R-users.
 
 ## Quick start
 
 ### Installation
 
 ```R
-# stable version:
+# stable version (not yet):
 # install.packages("rosr")
 # or development version:
 remote::install_github("pzhaonet/rosr")
 ```
 
-### Load 
+### For non-R users
+
+'rosr' is friendly to non-R users. RStudio is recommended as an advanced user interface. After installation, click the 'Addins' button and you can find "Create a rosr project". Click the elements you want, and click 'create'
+
+![](https://github.com/rbind/pzhao/raw/master/static/img/rosr-addin.png)
+
+### For R users
 
 ```R
 require('rosr')
+create_rosr()
 ```
-### Create a project
 
-```R
-rosr_new
-```
 
 # License
 
