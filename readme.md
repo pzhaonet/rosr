@@ -21,6 +21,8 @@ remote::install_github("pzhaonet/rosr")
 
 ![](https://github.com/rbind/pzhao/raw/master/static/img/rosr-addin.png)
 
+![](https://github.com/rbind/pzhao/raw/master/static/img/rosr-screenshot.png)
+
 ### For R users
 
 ```R
