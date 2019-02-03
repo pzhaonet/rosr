@@ -9,6 +9,7 @@ output:
     latex_engine: xelatex
     citation_package: natbib
     keep_tex: yes
+documentclass: book
 bibliography: [bib/rosr.bib]
 biblio-style: apalike
 link-citations: yes

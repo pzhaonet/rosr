@@ -54,9 +54,8 @@ read_eq <- function(eqs, skip = 6){
   eqs <- read.table(eqs, skip = skip, sep = '|', header = TRUE,
                     stringsAsFactors = FALSE, encoding = 'UTF-8')
   eqs <- eqs[-1, c("number", "label", "description", "eq" )]
-  # eqs$eq <- gsub('^[[:space:]]*[\\$]*', '', eqs$eq)
-  # eqs$eq <- gsub('[\\$]*[[:space:]]*$', '', eqs$eq)
-  eqs$eq <- rm_space(eqs$eq)
+  eqs$eq <- gsub('^[[:space:]]*[\\$]*', '', eqs$eq)
+  eqs$eq <- gsub('[\\$]*[[:space:]]*$', '', eqs$eq)
   eqs$number <- rm_space(eqs$number)
   eqs$label <- rm_space(eqs$label)
   return(eqs)
