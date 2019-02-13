@@ -18,7 +18,5 @@ a demo equation sheet
 Create a demo equation sheet
 }
 \examples{
-\dontrun{
-create_eq()
-}
+create_eq(tempdir())
 }

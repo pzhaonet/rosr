@@ -18,8 +18,6 @@ a data frame with equations
 Read equations from a file
 }
 \examples{
-\dontrun{
-eq_file <- paste0(system.file(package = "rosr"), "/skeleton/equation/rosr-eq.Rmd")
+eq_file <- file.path(system.file(package = "rosr"), "skeleton/equation/rosr-eq.Rmd")
 eqs <- read_eq(eq_file)
-}
 }

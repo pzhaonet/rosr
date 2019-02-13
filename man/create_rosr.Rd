@@ -25,7 +25,5 @@ a project folder
 Create a new project or a new sub-project
 }
 \examples{
-\dontrun{
-create_rosr()
-}
+create_rosr(dest_dir = tempdir(), sub_project = "Rproj")
 }

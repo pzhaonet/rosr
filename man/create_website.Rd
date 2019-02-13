@@ -20,7 +20,5 @@ copied file.
 Create a demo blogdown website
 }
 \examples{
-\dontrun{
-create_website()
-}
+create_website(tempdir())
 }

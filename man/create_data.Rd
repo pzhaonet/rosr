@@ -16,7 +16,5 @@ a demo data file
 Create a demo data file
 }
 \examples{
-\dontrun{
-create_data()
-}
+create_data(tempdir())
 }

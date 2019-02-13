@@ -51,7 +51,7 @@ rosr_ui <- function(){
           fluidRow(
             column(12, align="right",
                    actionButton('select_all', 'Select all'),
-                   actionButton('select_suggested', 'Select suggested')
+                   actionButton('select_suggested', 'Default')
             )
           )
         )
@@ -191,6 +191,11 @@ rosr_server <- function(input, output, session) {
   })
 }
 
+#' Get the template name of the given sub-project name
+#'
+#' @param sub_project the name of the sub-project
+#'
+#' @return the name of the template
 template_of_sub_project <- function(sub_project){
   templates()$templates[templates()$sub_project == sub_project]
 }

@@ -23,7 +23,7 @@ copied file.
 Create a demo markdown project
 }
 \examples{
-\dontrun{
-create_rmd()
+\donttest{
+create_rmd(tempdir(), if_render = FALSE)
 }
 }

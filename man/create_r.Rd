@@ -16,7 +16,5 @@ a demo .R script
 Create a demo .R script
 }
 \examples{
-\dontrun{
-create_r()
-}
+create_r(tempdir())
 }

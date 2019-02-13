@@ -16,7 +16,5 @@ a demo .bib file
 Create a demo .bib file
 }
 \examples{
-\dontrun{
-create_bib()
-}
+create_bib(tempdir())
 }

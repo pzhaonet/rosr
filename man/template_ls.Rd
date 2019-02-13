@@ -13,7 +13,5 @@ a list of templates
 Display available templates in a list
 }
 \examples{
-\dontrun{
 template_ls()
-}
 }

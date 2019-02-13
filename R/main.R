@@ -7,9 +7,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' create_dir()
-#' }
 create_dir <- function(to = getwd()){
   if(!dir.exists(to)) dir.create(to)
 }
@@ -22,11 +20,12 @@ create_dir <- function(to = getwd()){
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' create_rproj()
-#' }
+#' oldwd <- getwd()
+#' setwd(tempdir())
+#' create_rproj('test')
+#' setwd(oldwd)
 create_rproj <- function(project){
-  rproj <- paste0(system.file(package = 'rosr'), '/skeleton/rproj')
+  rproj <- system.file(package = 'rosr', 'skeleton/rproj')
   file.copy(rproj, paste0('-', project, '.Rproj'))
 }
 
@@ -38,9 +37,7 @@ create_rproj <- function(project){
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' create_bib()
-#' }
+#' create_bib(tempdir())
 create_bib <- function(to = getwd()){
   create_dir(to)
   bib_template <- paste0(system.file(package = 'rosr'), '/skeleton/bib/rosr.bib')
@@ -55,9 +52,7 @@ create_bib <- function(to = getwd()){
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' create_data()
-#' }
+#' create_data(tempdir())
 create_data <- function(to = getwd()){
   create_dir(to)
   write.csv(datasets::airquality, paste0(to, '/rosr.csv'), row.names = FALSE)
@@ -71,13 +66,11 @@ create_data <- function(to = getwd()){
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' create_r()
-#' }
+#' create_r(tempdir())
 create_r <- function(to = getwd()){
   create_dir(to)
-  r_template <- paste0(system.file(package = 'rosr'), '/skeleton/R/rosr.R')
-  file.copy(r_template, paste0(to, '/rosr.R'))
+  r_template <- system.file(package = 'rosr','skeleton/R/rosr.R')
+  file.copy(r_template, file.path(to, 'rosr.R'))
 }
 
 #' Create a demo equation sheet
@@ -89,9 +82,7 @@ create_r <- function(to = getwd()){
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' create_eq()
-#' }
+#' create_eq(tempdir())
 create_eq <- function(to = getwd(), if_render = TRUE){
   create_dir(to)
   r_template <- paste0(system.file(package = 'rosr'), '/skeleton/equation/rosr-eq.Rmd')
@@ -107,9 +98,7 @@ create_eq <- function(to = getwd(), if_render = TRUE){
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' create_rpkg()
-#' }
+#' create_rpkg(tempdir())
 create_rpkg <- function(to = getwd()){
   mypath <- paste0(system.file(package = 'beginr'), "/zip/rpkg.zip")
   unzip(mypath, exdir = to)
@@ -124,9 +113,7 @@ create_rpkg <- function(to = getwd()){
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' create_mindmap()
-#' }
+#' create_mindmap(tempdir())
 create_mindmap <- function(to = getwd(), if_render = FALSE){
   create_dir(to)
   tree_widget <- mindr::tree(show_files = TRUE)
@@ -149,8 +136,8 @@ create_mindmap <- function(to = getwd(), if_render = FALSE){
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' create_rmd()
+#' \donttest{
+#' create_rmd(tempdir(), if_render = FALSE)
 #' }
 create_rmd <- function(to = 'manuscript',
                        template = "copernicus_article",
@@ -239,9 +226,7 @@ create_rmd <- function(to = 'manuscript',
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' create_book()
-#' }
+#' create_book(tempdir(), if_render = FALSE)
 create_book <- function(to = getwd(),
                         template = "demo",
                         if_render = TRUE,
@@ -292,9 +277,7 @@ create_book <- function(to = getwd(),
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' create_website()
-#' }
+#' create_website(tempdir())
 create_website <- function(to = getwd(),
                            theme = "yihui/hugo-lithium",
                            oldwd = getwd()){
@@ -331,9 +314,7 @@ create_website <- function(to = getwd(),
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' create_rosr()
-#' }
+#' create_rosr(dest_dir = tempdir(), sub_project = 'Rproj')
 create_rosr <- function(project = 'test',
                    if_render = TRUE,
                    dest_dir = NA,

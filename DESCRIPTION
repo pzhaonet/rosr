@@ -19,7 +19,7 @@ Imports:
   shiny,
   devtools
 Suggests:
-Description: The 'rosr' package creates reproducible academic projects with integrated academic elements, including datasets, references, codes, images, manuscripts, dissertations, slides and so on. These elements are well connected so that they can be easily synchronized and updated. 
+Description: Creates reproducible academic projects with integrated academic elements, including datasets, references, codes, images, manuscripts, dissertations, slides and so on. These elements are well connected so that they can be easily synchronized and updated. 
 License: GPL-3 | file LICENSE
 URL: https://github.com/pzhaonet/rosr
 BugReports: https://github.com/pzhaonet/rosr/issues

@@ -16,7 +16,5 @@ a demo R package
 Create a demo R package
 }
 \examples{
-\dontrun{
-create_rpkg()
-}
+create_rpkg(tempdir())
 }

@@ -16,7 +16,8 @@ a .Rproj.file
 Create a .Rproj file
 }
 \examples{
-\dontrun{
-create_rproj()
-}
+oldwd <- getwd()
+setwd(tempdir())
+create_rproj("test")
+setwd(oldwd)
 }

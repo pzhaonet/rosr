@@ -1,34 +1,41 @@
 #' Install dependencies
 #'
+#' @param server character. The server from where to install the dependencies.
+#'
 #' @return install packages
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' install_packages()
-#' }
-install_packages <- function(){
+#' install_packages(NA)
+install_packages <- function(server = c('cran', 'github')){
+  if(is.na(server)) return(message('No package installed.'))
+
   # from CRAN
-  pkgs_cran <- c('beginr', 'rmd', 'tufte')
-  lapply(pkgs_cran,
-         function(i) {
-           if(system.file(package = i) == '') {
-             install.packages(i)
-             message('The package ', i, ' has been installed.')
+  if('cran' %in% server){
+    pkgs_cran <- c('beginr', 'rmd', 'tufte')
+    lapply(pkgs_cran,
+           function(i) {
+             if(system.file(package = i) == '') {
+               install.packages(i)
+               message('The package ', i, ' has been installed.')
+             }
            }
-         }
-  )
-  # from github
-  pkgs_github <- c('bbucior/drposter')
-  lapply(pkgs_github,
-         function(x){
-           if(system.file(package = strsplit(x, '/')[[1]][2]) == '') {
-             devtools::install_github(x)
-             message('The package ', x, ' has been installed.')
+    )
+  }
+
+  # from CRAN
+  if('github' %in% server){
+    # from github
+    pkgs_github <- c('bbucior/drposter')
+    lapply(pkgs_github,
+           function(x){
+             if(system.file(package = strsplit(x, '/')[[1]][2]) == '') {
+               devtools::install_github(x)
+               message('The package ', x, ' has been installed.')
+             }
            }
-         }
-  )
-  message('All dependency packages have been installed.')
+    )
+  }
 }
 
 #' Display available sub projects
@@ -52,9 +59,7 @@ sub_projects <- function(){
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' template_ls()
-#' }
 template_ls <- function(){
 
   # rmarkdown templates
@@ -92,9 +97,7 @@ template_ls <- function(){
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' templates()
-#' }
 templates <- function(){
   templates_list <- template_ls()
   package <- rep(names(templates_list), sapply(templates_list, length))

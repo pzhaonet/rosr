@@ -16,7 +16,5 @@ an empty directory
 Create an empty directory
 }
 \examples{
-\dontrun{
 create_dir()
-}
 }

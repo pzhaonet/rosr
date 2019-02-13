@@ -18,7 +18,5 @@ a demo mind map
 Create a demo mind map
 }
 \examples{
-\dontrun{
-create_mindmap()
-}
+create_mindmap(tempdir())
 }

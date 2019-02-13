@@ -4,7 +4,10 @@
 \alias{install_packages}
 \title{Install dependencies}
 \usage{
-install_packages()
+install_packages(server = c("cran", "github"))
+}
+\arguments{
+\item{server}{character. The server from where to install the dependencies.}
 }
 \value{
 install packages
@@ -13,7 +16,5 @@ install packages
 Install dependencies
 }
 \examples{
-\dontrun{
-install_packages()
-}
+install_packages(NA)
 }

@@ -13,7 +13,5 @@ a data frame of templates
 Display available templates in a data frame
 }
 \examples{
-\dontrun{
 templates()
-}
 }

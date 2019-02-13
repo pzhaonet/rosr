@@ -25,7 +25,5 @@ A string of the equation.
 Insert an equation.
 }
 \examples{
-\dontrun{
 eq()
-}
 }

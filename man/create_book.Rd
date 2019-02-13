@@ -22,7 +22,5 @@ copied file.
 Create a demo bookdown project
 }
 \examples{
-\dontrun{
-create_book()
-}
+create_book(tempdir(), if_render = FALSE)
 }
