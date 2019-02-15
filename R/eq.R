@@ -9,9 +9,7 @@
 #' @return A string of the equation.
 #' @export
 #' @examples
-#' \dontrun{
 #' eq()
-#' }
 eq <- function(eqs = NULL, label = NULL, number = NULL,
                style = c('numbered', 'display', 'inline', 'none'),
                skip = 6) {
@@ -46,10 +44,8 @@ eq <- function(eqs = NULL, label = NULL, number = NULL,
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' eq_file <- paste0(system.file(package = 'rosr'), '/skeleton/equation/rosr-eq.Rmd')
+#' eq_file <- file.path(system.file(package = 'rosr'), 'skeleton/equation/rosr-eq.Rmd')
 #' eqs <- read_eq(eq_file)
-#' }
 read_eq <- function(eqs, skip = 6){
   eqs <- read.table(eqs, skip = skip, sep = '|', header = TRUE,
                     stringsAsFactors = FALSE, encoding = 'UTF-8')
@@ -59,4 +55,27 @@ read_eq <- function(eqs, skip = 6){
   eqs$number <- rm_space(eqs$number)
   eqs$label <- rm_space(eqs$label)
   return(eqs)
+}
+
+#' Convert a MathML equation for Microsoft Word
+#'
+#' @param connection 	a connection object or a character string.
+#'
+#' @details Copy the MathML codes of an equation into your clipboard, and run eq_word(), then paste from  your clipboard to MS Word.
+#' @return a Word equation
+#' @export
+#'
+#' @examples
+#' # Copy the MathML codes of an equation into your clipboard.
+#' eqw('test')
+#' # Now paste to MS Word.
+eqw <- function(connection = 'clipboard'){
+  if(is.na(connection) | (connection != 'clipboard' & !file.exists(connection))) return(message('connection must be "clipboard" or a valid file path.'))
+  mathml <- readLines(connection, encoding = 'UTF-8', warn = FALSE)
+  writeLines(c('<?xml version="1.0"?>',
+               mathml,
+               ''),
+             'clipboard',
+             useBytes = TRUE)
+  message('Now you can paste the equation in MS Word.')
 }

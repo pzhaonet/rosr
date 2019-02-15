@@ -107,17 +107,17 @@ create_rpkg <- function(to = getwd()){
 #' Create a demo mind map
 #'
 #' @param to the destination directory
-#' @param if_render Logical. Whether render the templates.
+#' @param if_save Logical. Whether save the mindmap.
 #'
 #' @return a demo mind map
 #' @export
 #'
 #' @examples
 #' create_mindmap(tempdir())
-create_mindmap <- function(to = getwd(), if_render = FALSE){
+create_mindmap <- function(to = getwd(), if_save = FALSE){
   create_dir(to)
   tree_widget <- mindr::tree(show_files = TRUE)
-  if(if_render) {
+  if(if_save) {
     mmfile <- 'rosr.html'
     htmlwidgets::saveWidget(tree_widget, mmfile)
     file.copy(mmfile, paste0(to, '/', mmfile))
@@ -294,7 +294,7 @@ create_website <- function(to = getwd(),
                       theme_rename, 'content', sep = '/')
   if(dir.exists(my_template)){
     file.copy(my_template,  webdir, recursive = TRUE, overwrite = TRUE)
-    bib_dir <- 'content/post/bib'
+    bib_dir <- file.path(webdir, 'content/post/bib')
     create_dir(bib_dir)
   }
   rproj <- paste0(system.file(package = 'rosr'), '/skeleton/rproj')
@@ -409,7 +409,7 @@ create_rosr <- function(project = 'test',
 
   #+ ## mindmap----
   newdir <- 'mindmap'
-  if(newdir %in% sub_project) create_mindmap(to = newdir, if_render = if_render)
+  if(newdir %in% sub_project) create_mindmap(to = newdir, if_save = if_render)
 
   message('The rosr project "', project, '" has been generated/updated!')
 }

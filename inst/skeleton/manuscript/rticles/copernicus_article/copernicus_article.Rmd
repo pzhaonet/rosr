@@ -76,6 +76,7 @@ output:
 # - [@bib-entry1; @bib-entry2]
 # - [](hyperlink)
 # - ![](image link), knitr::include_graphics(), \@ref(fig:fig1)
+# - (ref:fig1) fig.cap='(ref:fig1)'
 # - knitr::kable(), \@ref(tab:tab1)
 ```
 

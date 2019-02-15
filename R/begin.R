@@ -6,9 +6,10 @@
 #' @export
 #'
 #' @examples
-#' install_packages(NA)
+#' \donttest{
+#' install_packages()
+#' }
 install_packages <- function(server = c('cran', 'github')){
-  if(is.na(server)) return(message('No package installed.'))
 
   # from CRAN
   if('cran' %in% server){

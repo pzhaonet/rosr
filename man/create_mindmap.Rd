@@ -4,12 +4,12 @@
 \alias{create_mindmap}
 \title{Create a demo mind map}
 \usage{
-create_mindmap(to = getwd(), if_render = FALSE)
+create_mindmap(to = getwd(), if_save = FALSE)
 }
 \arguments{
 \item{to}{the destination directory}
 
-\item{if_render}{Logical. Whether render the templates.}
+\item{if_save}{Logical. Whether save the mindmap.}
 }
 \value{
 a demo mind map
