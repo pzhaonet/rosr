@@ -47,14 +47,17 @@ eq <- function(eqs = NULL, label = NULL, number = NULL,
 #' eq_file <- file.path(system.file(package = 'rosr'), 'skeleton/equation/rosr-eq.Rmd')
 #' eqs <- read_eq(eq_file)
 read_eq <- function(eqs, skip = 6){
-  eqs <- read.table(eqs, skip = skip, sep = '|', header = TRUE,
-                    stringsAsFactors = FALSE, encoding = 'UTF-8')
-  eqs <- eqs[-1, c("number", "label", "description", "eq" )]
-  eqs$eq <- gsub('^[[:space:]]*[\\$]*', '', eqs$eq)
-  eqs$eq <- gsub('[\\$]*[[:space:]]*$', '', eqs$eq)
-  eqs$number <- rm_space(eqs$number)
-  eqs$label <- rm_space(eqs$label)
-  return(eqs)
+  eqs <- readLines(eqs, encoding = 'UTF-8')
+  eqs <- eqs[-c(1:(skip + 2))]
+  eqs <- gsub('[[:space:]]*\\|[[:space:]]*$', '', eqs)
+  eqs_split <- strsplit(eqs, '\\|', )
+  eqs_df <- data.frame(number = rm_space(sapply(eqs_split, function(x) x[2])), stringsAsFactors = FALSE)
+  eqs_df$label <- rm_space(sapply(eqs_split, function(x) x[3]))
+  eqs_df$description <- rm_space(sapply(eqs_split, function(x) x[4]))
+  eqs_df$eq <- sapply(eqs, function(x) gsub('^.*\\${2}(.+)\\${2}$', '\\1', x))
+  # eqs_df$eq <- sapply(eqs, function(x) gsub('.*\\$+([^\\$]+)\\$+.*$', '\\1', x))
+
+  return(eqs_df)
 }
 
 #' Convert a MathML equation for Microsoft Word

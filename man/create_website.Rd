@@ -20,5 +20,5 @@ copied file.
 Create a demo blogdown website
 }
 \examples{
-create_website(tempdir())
+# create_website(tempdir())
 }

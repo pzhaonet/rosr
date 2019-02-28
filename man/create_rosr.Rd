@@ -25,5 +25,5 @@ a project folder
 Create a new project or a new sub-project
 }
 \examples{
-create_rosr(dest_dir = tempdir(), sub_project = "Rproj")
+# create_rosr(dest_dir = tempdir(), sub_project = 'Rproj')
 }

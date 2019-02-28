@@ -277,7 +277,7 @@ create_book <- function(to = getwd(),
 #' @export
 #'
 #' @examples
-#' create_website(tempdir())
+#' # create_website(tempdir())
 create_website <- function(to = getwd(),
                            theme = "yihui/hugo-lithium",
                            oldwd = getwd()){
@@ -314,7 +314,7 @@ create_website <- function(to = getwd(),
 #' @export
 #'
 #' @examples
-#' create_rosr(dest_dir = tempdir(), sub_project = 'Rproj')
+#' # create_rosr(dest_dir = tempdir(), sub_project = 'Rproj')
 create_rosr <- function(project = 'test',
                    if_render = TRUE,
                    dest_dir = NA,

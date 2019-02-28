@@ -16,5 +16,7 @@ install packages
 Install dependencies
 }
 \examples{
-install_packages(NA)
+\donttest{
+install_packages()
+}
 }
