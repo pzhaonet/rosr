@@ -12,7 +12,7 @@
 #' eq()
 eq <- function(eqs = NULL, label = NULL, number = NULL,
                style = c('numbered', 'display', 'inline', 'none'),
-               skip = 6) {
+               skip = 6, if_copy = TRUE) {
   if(is.null(eqs)) return(message('A source file of the equations must be give.'))
   if(is.null(number) & is.null(label)) return(message('A number or a label of the equation must be given.'))
   style <- match.arg(style)
@@ -33,6 +33,7 @@ eq <- function(eqs = NULL, label = NULL, number = NULL,
   if(!is.data.frame(eqs)) eqs <- read_eq(eqs, skip)
   eq_txt <- ifelse(is.null(number), eqs$eq[eqs$label == label], eqs$eq[eqs$n == number])
   cat(before, eq_txt, after, sep = '')
+  if(if_copy) writeLines(paste('$$', eq_txt, '$$'), 'clipboard')
 }
 
 #' Read equations from a file
@@ -56,8 +57,9 @@ read_eq <- function(eqs, skip = 6){
   eqs_df$description <- rm_space(sapply(eqs_split, function(x) x[4]))
   eqs_df$eq <- sapply(eqs, function(x) gsub('^.*\\${2}(.+)\\${2}$', '\\1', x))
   # eqs_df$eq <- sapply(eqs, function(x) gsub('.*\\$+([^\\$]+)\\$+.*$', '\\1', x))
-
+  # myenv <- list2env(setNames(as.list(eqs_df), zh))
   return(eqs_df)
+  # return(myenv)
 }
 
 #' Convert a MathML equation for Microsoft Word
