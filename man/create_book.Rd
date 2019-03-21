@@ -4,7 +4,8 @@
 \alias{create_book}
 \title{Create a demo bookdown project}
 \usage{
-create_book(to = getwd(), template = "demo", if_render = TRUE, package = "bookdownplus")
+create_book(to = getwd(), template = "demo", if_render = TRUE, package = "bookdownplus", 
+    bdp_output = NULL)
 }
 \arguments{
 \item{to}{the desnitation directory.}
@@ -14,6 +15,8 @@ create_book(to = getwd(), template = "demo", if_render = TRUE, package = "bookdo
 \item{if_render}{whether render it.}
 
 \item{package}{the package name where the template comes from.}
+
+\item{bdp_output}{the type of bookdownplus output. Only valid when package = 'bookdownplus'.}
 }
 \value{
 copied file.

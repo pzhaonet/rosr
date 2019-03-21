@@ -221,6 +221,7 @@ create_rmd <- function(to = 'manuscript',
 #' @param to the desnitation directory.
 #' @param package the package name where the template comes from.
 #' @param if_render whether render it.
+#' @param bdp_output the type of bookdownplus output. Only valid when package = 'bookdownplus'.
 #'
 #' @return copied file.
 #' @export
@@ -230,7 +231,8 @@ create_rmd <- function(to = 'manuscript',
 create_book <- function(to = getwd(),
                         template = "demo",
                         if_render = TRUE,
-                        package = 'bookdownplus'){
+                        package = 'bookdownplus',
+                        bdp_output = NULL){
   oldwd = getwd()
   on.exit(setwd(oldwd))
   if(package == 'bookdownplus'){
@@ -239,7 +241,7 @@ create_book <- function(to = getwd(),
     create_dir(to = bookdir)
     bookdownplus::bookdownplus(template = template,
                                render = FALSE,
-                               to = bookdir)
+                               to = bookdir, more_output = bdp_output)
     rmd_new <- copy_rmd(package = package,
                         template = template,
                         sub_project = 'book',
@@ -256,7 +258,7 @@ create_book <- function(to = getwd(),
     # index_rmd[grep('^bibliography: ', index_rmd)] <- 'bibliography: [bib/rosr.bib]'
     # writeLines(index_rmd, index_rmd_path, useBytes = TRUE)
     if(if_render) {
-      bookdownplus::bookdownplus(render = TRUE, to = bookdir, new = FALSE)
+      bookdownplus::bookdownplus(render = TRUE, to = bookdir, new = FALSE, more_output = bdp_output)
     }
   }
   if(package == 'pagedown'){

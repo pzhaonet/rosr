@@ -39,7 +39,11 @@ rosr_ui <- function(){
             column(2, checkboxGroupInput('book', 'book',
                                          choices = templates()$templates[templates()$sub_project == 'book'],
                                          selected = 'demo'),
-                   actionLink("book_all","Select All")),
+                   actionLink("book_all","Select All"),
+                   hr(),
+                   checkboxGroupInput('bookdownoutput', 'output',
+                                      choices = bookdownplus::get_output(),
+                                      selected = '')),
             column(2, checkboxGroupInput('website', 'website',
                                          choices = templates()$templates[templates()$sub_project == 'website'],
                                          selected = 'yihui/hugo-lithium'),
@@ -117,7 +121,8 @@ rosr_server <- function(input, output, session) {
         create_book(to = file.path(input$path, 'book'),
                     template = i,
                     package = template_df$package[template_df$templates == i],
-                    if_render =  input$if_render == 'Yep')
+                    if_render =  input$if_render == 'Yep',
+                    bdp_output = input$bookdownoutput)
       }
 
     # create website
