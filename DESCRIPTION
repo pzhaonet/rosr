@@ -17,7 +17,8 @@ Imports:
   rstudioapi,
   htmlwidgets,
   shiny,
-  devtools
+  devtools,
+  clipr
 Suggests:
 Description: Creates reproducible academic projects with integrated academic elements, including datasets, references, codes, images, manuscripts, dissertations, slides and so on. These elements are well connected so that they can be easily synchronized and updated. 
 License: GPL-3 | file LICENSE

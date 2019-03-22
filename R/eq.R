@@ -5,8 +5,10 @@
 #' @param label Character. The label of the equation.
 #' @param style character. The style of the equation.
 #' @param skip integer. the number of lines of the data file to skip before beginning to read data.
+#' @param if_copy logical. Whether copy the equation into the clipboard.
 #'
 #' @return A string of the equation.
+#' @importFrom clipr clipr_available write_clip
 #' @export
 #' @examples
 #' eq()
@@ -33,7 +35,14 @@ eq <- function(eqs = NULL, label = NULL, number = NULL,
   if(!is.data.frame(eqs)) eqs <- read_eq(eqs, skip)
   eq_txt <- ifelse(is.null(number), eqs$eq[eqs$label == label], eqs$eq[eqs$n == number])
   cat(before, eq_txt, after, sep = '')
-  if(if_copy) writeLines(paste('$$', eq_txt, '$$'), 'clipboard')
+  if(if_copy){
+    if (clipr::clipr_available()) {
+      out_lines <- paste('$$', eq_txt, '$$')
+      clipr::write_clip(out_lines)
+    } else {
+      message('Clipboard is unavailable.')
+    }
+  }
 }
 
 #' Read equations from a file
