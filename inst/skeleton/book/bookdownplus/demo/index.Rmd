@@ -22,12 +22,16 @@ site: bookdown::bookdown_site
 
 ```{r md-hint, include=FALSE}
 # Markdown Syntax
+# - FORMAT  : *italic*, **bold**, `code`, ~subscript~, ^superscript^, > quote, ^[footnote] # - [](hyperlink)
+# - EQUATION: $inline equation$, $$display equation$$, \begin{equation} (\#eq:eq-label)\end(equation), \@ref(eq:eq-label)
+# - CITATION: [@bib-entry1; @bib-entry2]
+# - FIGURE  : ![](image link), knitr::include_graphics(), \@ref(fig:fig1)
+# - TABLE   : knitr::kable(), \@ref(tab:tab1)
+```
 
-# - *italic*, **bold**, `code`, ~subscript~, ^superscript^, > quote, ^[footnote]
-# - $inline equation$, $$display equation$$
-# - \begin{equation} (\#eq:eq-label)\end(equation), \@ref(eq:eq-label)
-# - [@bib-entry1; @bib-entry2]
-# - [](hyperlink)
-# - ![](image link), knitr::include_graphics(), \@ref(fig:fig1)
-# - knitr::kable(), \@ref(tab:tab1)
+```{r set, include=FALSE}
+oldwd <- getwd()
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE) 
+knitr::opts_knit$set(root.dir = dirname(dirname(oldwd)))
+require('rosr')
 ```

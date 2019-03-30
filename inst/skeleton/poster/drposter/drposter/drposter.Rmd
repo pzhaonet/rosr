@@ -9,16 +9,19 @@ output:
 
 ```{r md-hint, include=FALSE}
 # Markdown Syntax
-
-# - *italic*, **bold**, `code`, ~subscript~, ^superscript^, > quote, ^[footnote]
-# - $inline equation$, $$display equation$$
-# - \begin{equation} (\#eq:eq-label)\end(equation), \@ref(eq:eq-label)
-# - [@bib-entry1; @bib-entry2]
-# - [](hyperlink)
-# - ![](image link), knitr::include_graphics(), \@ref(fig:fig1)
-# - knitr::kable(), \@ref(tab:tab1)
+# - FORMAT  : *italic*, **bold**, `code`, ~subscript~, ^superscript^, > quote, ^[footnote] # - [](hyperlink)
+# - EQUATION: $inline equation$, $$display equation$$, \begin{equation} (\#eq:eq-label)\end(equation), \@ref(eq:eq-label)
+# - CITATION: [@bib-entry1; @bib-entry2]
+# - FIGURE  : ![](image link), knitr::include_graphics(), \@ref(fig:fig1)
+# - TABLE   : knitr::kable(), \@ref(tab:tab1)
 ```
 
+```{r set, include=FALSE}
+oldwd <- getwd()
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE) 
+knitr::opts_knit$set(root.dir = dirname(dirname(oldwd)))
+require('rosr')
+```
 
 # {.col-2}
 
@@ -30,7 +33,7 @@ This template comes from the R 'drposter' package and modified by Peng Zhao. It 
 
 Firstly, we switch off the codes and message display, and set the working directory to the rosr project.
 
-```{r setup, include=TRUE}
+```R
 oldwd <- getwd()
 knitr::opts_chunk$set(echo = FALSE, 
                       message = FALSE, 
@@ -71,7 +74,7 @@ Use the `rosr::eq()` function to insert an equation. See Eq. \@ref(eq:sd)
 
 ```{r, results='asis'}
 eqs <- 'equation/rosr-eq.Rmd'
-rosr::eq(eqs, label = 'sd')
+eq(eqs, label = 'sd')
 ```
 
 # {.col-2}
@@ -87,7 +90,7 @@ plot(aq)
 
 
 ```{r fig2, fig.cap='Insert an image.'}
-knitr::include_graphics(paste0(getwd(), '/image/rosr_R.png'))
+fig('rosr_R.png')
 ```
 
 

@@ -1,25 +1,27 @@
 ---
-
-title: Template for using R 'xaringan' package in a 'rosr' project
-subtitle: "⚔<br/>with xaringan"
+title: "Template for using R 'xaringan' package in a 'rosr' project"
 author: "Peng Zhao"
 date: "2019/01/14 (updated: `r Sys.Date()`)"
 output: powerpoint_presentation
 always_allow_html: yes
 ---
 
+
 ```{r md-hint, include=FALSE}
 # Markdown Syntax
-
-# - *italic*, **bold**, `code`, ~subscript~, ^superscript^, > quote, ^[footnote]
-# - $inline equation$, $$display equation$$
-# - \begin{equation} (\#eq:eq-label)\end(equation), \@ref(eq:eq-label)
-# - [@bib-entry1; @bib-entry2]
-# - [](hyperlink)
-# - ![](image link), knitr::include_graphics(), \@ref(fig:fig1)
-# - knitr::kable(), \@ref(tab:tab1)
+# - FORMAT  : *italic*, **bold**, `code`, ~subscript~, ^superscript^, > quote, ^[footnote] # - [](hyperlink)
+# - EQUATION: $inline equation$, $$display equation$$, \begin{equation} (\#eq:eq-label)\end(equation), \@ref(eq:eq-label)
+# - CITATION: [@bib-entry1; @bib-entry2]
+# - FIGURE  : ![](image link), knitr::include_graphics(), \@ref(fig:fig1)
+# - TABLE   : knitr::kable(), \@ref(tab:tab1)
 ```
 
+```{r set, include=FALSE}
+oldwd <- getwd()
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE) 
+knitr::opts_knit$set(root.dir = dirname(dirname(oldwd)))
+require('rosr')
+```
 
 ```{r, include=FALSE}
 options(htmltools.dir.version = FALSE)
@@ -27,7 +29,7 @@ options(htmltools.dir.version = FALSE)
 
 # Introduction
 
-This template comes from the R 'xaringan' package and modified by Peng Zhao. It intends to show how to cross refer other files in a 'rosr' project, rather than to show how to use the original template.
+This template intends to show how to cross refer other files in a 'rosr' project, rather than to show how to use the original template.
 
 ---
 
@@ -37,7 +39,7 @@ This template comes from the R 'xaringan' package and modified by Peng Zhao. It 
 
 Firstly, we switch off the codes and message display in a manuscript, and set the working directory to the rosr project.
 
-```{r setup}
+```R
 oldwd <- getwd()
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE) 
 knitr::opts_knit$set(root.dir = dirname(dirname(oldwd)))
@@ -74,6 +76,15 @@ DT::datatable(
 )
 ```
 
+No, `DT::datatable()` is not supported by ppt.
+
+How about `knitr::kable()`?
+
+```{r}
+knitr::kable(head(aq))
+```
+
+
 ---
 
 ## Figures
@@ -89,7 +100,7 @@ plot(aq)
 We could insert an image.
 
 ```{r img-lab, fig.cap='Insert an image.'}
-knitr::include_graphics(paste0(getwd(), '/image/rosr_R.png'))
+fig('rosr_R.png')
 ```
 
 ---
@@ -100,5 +111,7 @@ Use the `rosr::eq()` function to insert an equation. See Eq. \@ref(eq:sd)
 
 ```{r, results='asis'}
 eqs <- 'equation/rosr-eq.Rmd'
-rosr::eq(eqs, label = 'sd')
+eq(eqs, label = 'sd')
 ```
+
+No, ppt does not support latex equations.
