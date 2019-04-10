@@ -1,6 +1,6 @@
 Package: rosr
 Version: 0.0.7
-Date: 2019-03-30
+Date: 2019-04-09
 Title: Create Reproducible Research Projects
 Authors@R: c(
     person("Peng", "Zhao", role = c("aut", "cre"), email = "pzhao@pzhao.net")

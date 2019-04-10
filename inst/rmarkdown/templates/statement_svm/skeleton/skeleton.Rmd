@@ -1,0 +1,147 @@
+---
+output: 
+  bookdown::pdf_book:
+    base_format: rosr::statement_svm # for using bookdown features like \@ref()
+geometry: margin=1in
+bibliography: rosr.bib
+biblio-style: apalike
+link-citations: yes
+
+title: "Research and Teaching Statements"
+author: "Peng Zhao"
+date: "5 April, 2019"
+email: "pzhao@pzhao.net"
+
+fontfamily: mathpazo
+fontsize: 11pt
+header-includes:
+   - \linespread{1.05}
+---
+
+
+# Research Statement
+
+This is my research statement.
+
+## Topic 1
+
+This is topic 1.
+
+## Topic 2
+
+This is topic 2.
+
+# Teaching Statement
+
+This is my teaching statement.
+
+## Topic 1
+
+This is topic 1.
+
+## Topic 2
+
+This is topic 2.
+
+# How to use
+
+```{r md-hint, include=FALSE}
+# Markdown Syntax
+# - FORMAT  : *italic*, **bold**, `code`, ~subscript~, ^superscript^, > quote, ^[footnote] # - [](hyperlink)
+# - EQUATION: $inline equation$, $$display equation$$, \begin{equation} (\#eq:eq-label)\end(equation), \@ref(eq:eq-label)
+# - CITATION: [@bib-entry1; @bib-entry2]
+# - FIGURE  : ![](image link), knitr::include_graphics(), \@ref(fig:fig1)
+# - TABLE   : knitr::kable(), \@ref(tab:tab1)
+```
+
+This template intends to show how to work with R markdown briefly. 
+
+
+# Methods
+
+## Set up
+
+Firstly, we save the working directory. switch off the warning and message display in a manuscript if you want. 
+
+```{r wd}
+oldwd <- getwd()
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE) 
+```
+
+## Bib
+
+Now let's create a bib file.
+
+```{r bib, results='hide'}
+knitr::write_bib(c('knitr', 'rosr'), file = 'rosr.bib')
+```
+
+
+## Load
+
+If you are using  to the rosr project, you can set the root dir as the project directory You can syc the bibliography and load data or functions ((uncomment the following codes).
+ 
+```{r set}
+# knitr::opts_knit$set(root.dir = dirname(dirname(oldwd)))
+# require('rosr')
+```
+
+```{r load}
+# file.copy('bib/rosr.bib', oldwd)
+# source('R/rosr.R')
+```
+
+## Cite
+
+Now we can cite something like this: 
+
+The 'knitr' package [@R-knitr] and the 'rosr' package [@R-rosr] are useful.
+
+
+# Results and Discussions
+
+## Numbers
+
+```{r}
+temperature <- 17
+```
+
+We can use the results. For example, the mean temperature is `r temperature` degree.
+
+If this file is in a rosr project, we can use the results loaded from the `R/rosr.R`.
+
+## Tables
+
+We could insert a table as in Table \@ref(tab:tab-lab).
+
+```{r tab-lab}
+knitr::kable(head(airquality), booktabs = TRUE, caption = 'Air quality data.')
+```
+
+## Figures
+
+Plot the data in a diagram as shown in Fig. \@ref(fig:fig-lab).
+
+```{r fig-lab, fig.cap='Air quality data.'}
+plot(airquality)
+```
+
+If this file is in a rosr project, We could insert an image like this:
+
+```{r img-lab, fig.cap='Insert an image.'}
+# fig('rosr_R.png')
+```
+
+## Equations
+
+$$ E = mc^2 $$
+
+if in a rosr project, we can Use the `rosr::eq()` function to insert an equation. 
+
+```{r, results='asis'}
+# eqs <- 'equation/rosr-eq.Rmd'
+# eq(eqs, label = 'sd')
+```
+
+# References
+

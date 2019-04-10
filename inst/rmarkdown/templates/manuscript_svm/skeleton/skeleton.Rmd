@@ -1,0 +1,134 @@
+---
+output: 
+  bookdown::pdf_book:
+    base_format: rosr::manuscript_svm # for using bookdown features like \@ref()
+title: Template for your manuscript using RMarkdown
+runhead: "A Running Head"
+thanks: "This template is originally from Prof. Steve Miller (svmille@clemson.edu) and adapted to rosr by Dr. Peng Zhao. A detailed replication file is available on <http://github.com/svmiller>. "
+author:
+- name: Steven V. Miller
+  affiliation: Clemson University
+- name: Peng Zhao
+  affiliation: University of Innsbruck
+abstract: "This document provides an introduction to R Markdown, argues for its benefits, and presents a sample manuscript template intended for an academic audience. I include basic syntax to R Markdown and a minimal working example of how the analysis itself can be conducted within R with the `knitr` package and 'rosr' package."
+keywords: "pandoc, r markdown, knitr, rosr"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+geometry: margin=1in
+fontfamily: mathpazo
+fontsize: 11pt
+bibliography: rosr.bib
+biblio-style: apsr
+indent: yes
+colorlinks: true
+---
+
+
+```{r md-hint, include=FALSE}
+# Markdown Syntax
+# - FORMAT  : *italic*, **bold**, `code`, ~subscript~, ^superscript^, > quote, ^[footnote] # - [](hyperlink)
+# - EQUATION: $inline equation$, $$display equation$$, \begin{equation} (\#eq:eq-label)\end(equation), \@ref(eq:eq-label)
+# - CITATION: [@bib-entry1; @bib-entry2]
+# - FIGURE  : ![](image link), knitr::include_graphics(), \@ref(fig:fig1)
+# - TABLE   : knitr::kable(), \@ref(tab:tab1)
+```
+
+
+# Introduction
+
+This template intends to show how to work with R markdown briefly. 
+
+
+# Methods
+
+## Set up
+
+Firstly, we save the working directory. switch off the warning and message display in a manuscript if you want. 
+
+```{r wd}
+oldwd <- getwd()
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE) 
+```
+
+## Bib
+
+Now let's create a bib file.
+
+```{r bib, results='hide'}
+knitr::write_bib(c('knitr', 'rosr'), file = 'rosr.bib')
+```
+
+
+## Load
+
+If you are using  to the rosr project, you can set the root dir as the project directory You can syc the bibliography and load data or functions ((uncomment the following codes).
+ 
+```{r set}
+# knitr::opts_knit$set(root.dir = dirname(dirname(oldwd)))
+# require('rosr')
+```
+
+```{r load}
+# file.copy('bib/rosr.bib', oldwd)
+# source('R/rosr.R')
+```
+
+## Cite
+
+Now we can cite something like this: 
+
+The 'knitr' package [@R-knitr] and the 'rosr' package [@R-rosr] are useful.
+
+
+# Results and Discussions
+
+## Numbers
+
+```{r}
+temperature <- 17
+```
+
+We can use the results. For example, the mean temperature is `r temperature` degree.
+
+If this file is in a rosr project, we can use the results loaded from the `R/rosr.R`.
+
+## Tables
+
+We could insert a table as in Table \@ref(tab:tab-lab).
+
+```{r tab-lab}
+knitr::kable(head(airquality), booktabs = TRUE, caption = 'Air quality data.')
+```
+
+## Figures
+
+Plot the data in a diagram as shown in Fig. \@ref(fig:fig-lab).
+
+```{r fig-lab, fig.cap='Air quality data.'}
+plot(airquality)
+```
+
+If this file is in a rosr project, We could insert an image like this:
+
+```{r img-lab, fig.cap='Insert an image.'}
+# fig('rosr_R.png')
+```
+
+## Equations
+
+$$ E = mc^2 $$
+
+if in a rosr project, we can Use the `rosr::eq()` function to insert an equation. 
+
+```{r, results='asis'}
+# eqs <- 'equation/rosr-eq.Rmd'
+# eq(eqs, label = 'sd')
+```
+
+\newpage
+
+# References
+\setlength{\parindent}{-0.2in}
+\setlength{\leftskip}{0.2in}
+\setlength{\parskip}{8pt}
+\vspace*{-0.2in}
+\noindent
