@@ -97,6 +97,7 @@ eqw <- function(connection = 'clipboard'){
 
 #' Insert an image in the 'image/' directory.
 #'
+#' @importFrom knitr include_graphics
 #' @param filename The file name of the image.
 #'
 #' @return Insert an image.

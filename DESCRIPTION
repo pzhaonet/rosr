@@ -1,6 +1,6 @@
 Package: rosr
 Version: 0.0.7
-Date: 2019-04-09
+Date: 2019-05-01
 Title: Create Reproducible Research Projects
 Authors@R: c(
     person("Peng", "Zhao", role = c("aut", "cre"), email = "pzhao@pzhao.net")
@@ -18,7 +18,8 @@ Imports:
   htmlwidgets,
   shiny,
   devtools,
-  clipr
+  clipr,
+  knitr
 Suggests:
 Description: Creates reproducible academic projects with integrated academic elements, including datasets, references, codes, images, manuscripts, dissertations, slides and so on. These elements are well connected so that they can be easily synchronized and updated. 
 License: GPL-3 | file LICENSE

@@ -2,13 +2,34 @@
 % Please edit documentation in R/rmd.R
 \name{rmd_template}
 \alias{rmd_template}
+\alias{statement_svm}
+\alias{article_svm}
+\alias{cv_svm}
+\alias{syllabus_svm}
+\alias{manuscript_svm}
+\alias{letter_moderncv}
 \title{rosr Rmd template}
 \usage{
 rmd_template(..., template_name, keep_tex = TRUE, citation_package = "natbib", 
     md_extensions = c("-autolink_bare_uris", "-auto_identifiers"))
+
+statement_svm(...)
+
+article_svm(...)
+
+cv_svm(...)
+
+syllabus_svm(...)
+
+manuscript_svm(...)
+
+letter_moderncv(...)
 }
 \arguments{
-\item{...}{Additional arguments to \code{rmarkdown::pdf_document()}.}
+\item{..., }{keep_tex, citation_package, md_extensions
+Arguments passed to \code{rmarkdown::pdf_document()}.}
+
+\item{template_name}{the template name.}
 
 \item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF}
 
@@ -21,9 +42,10 @@ additional details.}
 }
 \value{
 An R Markdown output format.
-
-An R Markdown output format.
 }
 \description{
 rosr Rmd template
+}
+\details{
+statement_svm, article_svm, cv_svm, syllabus_svm, manuscript_svm are adapted from \url{https://github.com/svmiller/svm-r-markdown-templates}.
 }
