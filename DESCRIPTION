@@ -1,5 +1,5 @@
 Package: rosr
-Version: 0.0.7
+Version: 0.0.7.1
 Date: 2019-05-01
 Title: Create Reproducible Research Projects
 Authors@R: c(

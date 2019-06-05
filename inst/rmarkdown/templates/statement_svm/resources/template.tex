@@ -112,12 +112,13 @@ $if(graphics)$
 % We will generate all images so they have a width \maxwidth. This means
 % that they will get their normal width if they fit onto the page, but
 % are scaled down if they would overflow the margins.
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
-\else\Gin@nat@width\fi}
-\makeatother
-\let\Oldincludegraphics\includegraphics
-\renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
+% update: rosr commented the following codes to adapt bookdown
+%\makeatletter
+%\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+%\else\Gin@nat@width\fi}
+%\makeatother
+%\let\Oldincludegraphics\includegraphics
+%\renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
 $endif$
 
 \usepackage{float}
@@ -162,8 +163,9 @@ $endif$
 \begin{flushleft}\Large \bf $title$  \end{flushleft}
 	\vspace{1 mm}
 $author$ \\
-\emph{$affiliation$} \\
-$if(email)$\texttt{$email$}$else$TBD$endif$   \\
+$if(affiliation)$\emph{$affiliation$}$endif$  \\
+$if(email)$\texttt{$email$}$endif$   \\
+$if(date)$$date$$endif$   \\
 
 % \blankline
 
