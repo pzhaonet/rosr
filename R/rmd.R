@@ -53,10 +53,14 @@ manuscript_svm <- function(...){
   rmd_template(template_name = "manuscript_svm")
 }
 
-
 #' @rdname rmd_template
 #' @export
 letter_moderncv <- function(...){
   rmd_template(template_name = "letter_moderncv")
 }
 
+#' @rdname rmd_template
+#' @export
+beamer_zh <- function(...){
+  rmd_template(template_name = "beamer_zh")
+}

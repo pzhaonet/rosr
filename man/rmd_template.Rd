@@ -8,6 +8,7 @@
 \alias{syllabus_svm}
 \alias{manuscript_svm}
 \alias{letter_moderncv}
+\alias{beamer_zh}
 \title{rosr Rmd template}
 \usage{
 rmd_template(..., template_name, keep_tex = TRUE, citation_package = "natbib", 
@@ -24,6 +25,8 @@ syllabus_svm(...)
 manuscript_svm(...)
 
 letter_moderncv(...)
+
+beamer_zh(...)
 }
 \arguments{
 \item{..., }{keep_tex, citation_package, md_extensions

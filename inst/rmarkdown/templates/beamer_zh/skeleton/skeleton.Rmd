@@ -1,0 +1,36 @@
+---
+title: "R Markdown 中文 Beamer 示例"
+subtitle: "rosr"
+author: "大鹏"
+date: "2019/01/14 (updated: `r Sys.Date()`)"
+fontsize: 10pt
+output: 
+  beamer_presentation: 
+    template: beamer_rosr.tex
+    keep_tex: yes
+    latex_engine: xelatex
+    theme: Warsaw
+    fonttheme: professionalfonts
+    highlight: pygments
+always_allow_html: yes
+---
+
+## 环境要求
+
+R (必须) + RStudio (推荐) + tinytex (推荐)
+
+## 生成步骤
+
+1. 安装 rosr 扩展包：`devtools::install_github('pzhaonet/rosr')`
+2. 打开 RStudio.
+3. File - New File - R Markdown - From Template - beamer Presentation Chinese
+4. Ctrl> + Shift + k (knit PDF)
+
+
+## 代码与图
+
+```{r}
+library(ggplot2)
+ggplot(diamonds, aes(carat, price,colour=cut)) +
+    geom_point(alpha = 1/3) + stat_smooth()
+```
