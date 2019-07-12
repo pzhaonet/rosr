@@ -1,7 +1,8 @@
 ---
-title: "R Markdown 中文 Beamer 示例"
-subtitle: "rosr"
-author: "大鹏"
+title: "R Markdown 中文 Beamer 模板"
+subtitle: "rosr 项目示例"
+author: "赵鹏"
+institute: Max Planck Institute for Chemistry
 date: "2019/01/14 (updated: `r Sys.Date()`)"
 fontsize: 10pt
 output: 
@@ -9,17 +10,40 @@ output:
     template: beamer_rosr.tex
     keep_tex: yes
     latex_engine: xelatex
-    theme: Warsaw
-    fonttheme: professionalfonts
+    theme: warsaw # available themes: annarbor antibes bergen berkeley berlin boadilla boxes cambridgeus copenhagen darmstadt default dresden frankfurt goettingen hannover ilmenau juanlespins luebeck madrid malmoe marburg montpellier paloalto pittsburgh rochester singapore szeged warsaw (see <https://hartwork.org/beamer-theme-matrix>) 
+    colortheme: default # available color theme: default	albatross	beaver	beetle	crane	dolphin	dove	fly	lily	orchid	rose	seagull	seahorse	whale	wolverine.
+    fonttheme: professionalfonts # available font themes: default professionalfonts serif structurebold structureitalicserif structuresmallcapsserif (see <http://deic.uab.es/~iblanes/beamer_gallery/index_by_font.html>)
     highlight: pygments
 always_allow_html: yes
 ---
 
-## 环境要求
+```{r md-hint, include=FALSE}
+# Markdown Syntax
+# - FORMAT  : *italic*, **bold**, `code`, ~subscript~, ^superscript^, > quote, ^[footnote] # - [](hyperlink)
+# - EQUATION: $inline equation$, $$display equation$$, \begin{equation} (\#eq:eq-label)\end(equation), \@ref(eq:eq-label)
+# - CITATION: [@bib-entry1; @bib-entry2]
+# - FIGURE  : ![](image link), knitr::include_graphics(), \@ref(fig:fig1)
+# - TABLE   : knitr::kable(), \@ref(tab:tab1)
+```
+
+```{r set, include=FALSE}
+oldwd <- getwd()
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE) 
+knitr::opts_knit$set(root.dir = dirname(dirname(oldwd)))
+require('rosr')
+```
+
+```{r, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+## 简介
+
+本模板用来演示如何在一个'rosr'幻灯片里调用相对路径的文件。当然，这同时也是个中文 beamer 模板。
+
+## 使用方法
 
 R (必须) + RStudio (推荐) + tinytex (推荐)
-
-## 生成步骤
 
 1. 安装 rosr 扩展包：`devtools::install_github('pzhaonet/rosr')`
 2. 打开 RStudio.
@@ -27,10 +51,70 @@ R (必须) + RStudio (推荐) + tinytex (推荐)
 4. Ctrl> + Shift + k (knit PDF)
 
 
-## 代码与图
+
+## 准备
+
+我们先关掉警告和信息显示，并设置工作路径。
+
+```R
+oldwd <- getwd()
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE) 
+knitr::opts_knit$set(root.dir = dirname(dirname(oldwd)))
+```
+
+## 载入数据
+
+现在，可以使用相对于工作路径的路径读入文件了。例如，运行一段事先写好的代码。
+
+```{r load, results='hide'}
+source('R/rosr.R')
+```
+
+## 引用数字
+
+刚才，我们运行了 `source()`。现在，我们可以使用其运行结果了。例如，计算得到的平均温度是 `r temperature` °C。
+
+
+## 表格
 
 ```{r}
-library(ggplot2)
-ggplot(diamonds, aes(carat, price,colour=cut)) +
-    geom_point(alpha = 1/3) + stat_smooth()
+aq$Month <- as.factor(aq$Month)
+DT::datatable(
+  aq, 
+  fillContainer = FALSE, options = list(pageLength = 4)
+)
 ```
+
+看来，beamer 对 `DT::datatable()` 不支持。
+
+那么，`knitr::kable()`呢？
+
+```{r}
+knitr::kable(head(aq))
+```
+
+## 插图
+
+现场作画：
+
+```{r fig-lab, fig.cap='Air quality data.'}
+plot(aq)
+```
+
+或插入现成的图片：
+
+```{r img-lab, fig.cap='Insert an image.'}
+fig('rosr_R.png')
+```
+
+---
+
+## 公式
+
+使用 `rosr::eq()` 来插入事先写好的公式 \@ref(eq:sd)
+
+```{r, results='asis'}
+eqs <- 'equation/rosr-eq.Rmd'
+eq(eqs, label = 'sd')
+```
+
