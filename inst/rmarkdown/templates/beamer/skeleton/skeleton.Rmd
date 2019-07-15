@@ -1,9 +1,16 @@
 ---
 title: "Template for using R 'xaringan' package in a 'rosr' project"
 subtitle: "with xaringan"
+short_title: 'test'
 author: "Peng Zhao"
 date: "2019/01/14 (updated: `r Sys.Date()`)"
-output: beamer_presentation
+output: 
+  beamer_presentation:
+    theme: "Copenhagen"
+    toc: true
+    slide_level: 3
+    template: pandoc_shorttitle.tex
+    keep_tex: true
 always_allow_html: yes
 ---
 

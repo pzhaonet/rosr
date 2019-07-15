@@ -1,4 +1,9 @@
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{article}
+
+$if(revise-package)$
+\usepackage{$revise-package$}
+$endif$
+
 \usepackage[$geometry$]{geometry}
 \newcommand*{\authorfont}{\fontfamily{phv}\selectfont}
 $if(fontfamily)$
@@ -196,11 +201,12 @@ $endif$
 $endif$
 $if(biblatex)$
 \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
-
-
-
-
 $endif$
+
+$if(revise-package)$
+\listofchanges
+$endif$
+
 $for(include-after)$
 $include-after$
 

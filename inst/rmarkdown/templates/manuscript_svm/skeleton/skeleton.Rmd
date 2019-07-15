@@ -35,7 +35,7 @@ colorlinks: true
 
 # Introduction
 
-This template intends to show how to work with R markdown briefly. 
+This template intends to ~~~show how to~~~ +++work with+++ R markdown briefly. 
 
 
 # Methods
