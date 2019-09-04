@@ -12,7 +12,8 @@
 \title{rosr Rmd template}
 \usage{
 rmd_template(..., template_name, keep_tex = TRUE, citation_package = "natbib", 
-    md_extensions = c("-autolink_bare_uris", "-auto_identifiers"))
+    latex_engine = "xelatex", md_extensions = c("-autolink_bare_uris", 
+        "-auto_identifiers"))
 
 statement_svm(...)
 
@@ -38,6 +39,9 @@ Arguments passed to \code{rmarkdown::pdf_document()}.}
 
 \item{citation_package}{The LaTeX package to process citations, \code{natbib}
 or \code{biblatex}. Use \code{none} if neither package is to be used.}
+
+\item{latex_engine}{LaTeX engine for producing PDF output. Options are
+"pdflatex", "lualatex", and "xelatex".}
 
 \item{md_extensions}{Markdown extensions to be added or removed from the
 default definition or R Markdown. See the \code{\link{rmarkdown_format}} for

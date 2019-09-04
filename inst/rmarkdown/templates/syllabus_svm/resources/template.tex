@@ -1,4 +1,4 @@
-\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{article}
+\documentclass[$if(indentfirst)$indent,$endif$$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$if(chinese)$ctexart$else$article$endif$}
 $if(revise-package)$
 \usepackage{$revise-package$}
 $endif$
@@ -16,7 +16,7 @@ $endif$
 \newcommand{\blankline}{\quad\pagebreak[2]}
 
 \providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}} 
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \usepackage{longtable,booktabs}
 
 \usepackage{parskip}
@@ -31,7 +31,7 @@ $endif$
 
 %\setlength{\parindent}{0pt}
 %\setlength{\parskip}{6pt plus 2pt minus 1pt}
-%\setlength{\emergencystretch}{3em}  % prevent overfull lines 
+%\setlength{\emergencystretch}{3em}  % prevent overfull lines
 
 \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -40,7 +40,7 @@ $endif$
 \pagestyle{fancy}
 \usepackage{lastpage}
 \renewcommand{\headrulewidth}{0.3pt}
-\renewcommand{\footrulewidth}{0.0pt} 
+\renewcommand{\footrulewidth}{0.0pt}
 \lhead{}
 \chead{}
 \rhead{\footnotesize $title$ -- $date$}
@@ -82,7 +82,7 @@ $endif$
 \hypersetup{breaklinks=true,
             bookmarks=true,
             pdfauthor={$for(author)$$author.name$ ($author.affiliation$)$sep$ and $endfor$},
-             pdfkeywords = {$if(keywords)$$keywords$$endif$},  
+             pdfkeywords = {$if(keywords)$$keywords$$endif$},
             pdftitle={$title$$if(subtitle)$: $subtitle$$endif$},
             colorlinks=true,
             citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
@@ -154,13 +154,13 @@ $endif$
 \date{$date$}
 
 
-\begin{document}  
+\begin{document}
 
 	$if(title)$
 	\maketitle
 	$endif$
-	
-	
+
+
 		\thispagestyle{firststyle}
 
 %	\thispagestyle{empty}
@@ -168,16 +168,19 @@ $endif$
 
 	\noindent \begin{tabular*}{\textwidth}{ @{\extracolsep{\fill}} lr @{\extracolsep{\fill}}}
 
-
-E-mail: $if(email)$\texttt{$email$}$else$TBD$endif$ & Web: $if(web)$\href{http://$web$}{\tt $web$}$else$TBD$endif$\\
-Office Hours: $if(officehours)$$officehours$$else$TBD$endif$  &  Class Hours: $if(classhours)$$classhours$$else$TBD$endif$\\
-Office: $if(office)$$office$$else$TBD$endif$  & Class Room: $if(classroom)$$classroom$$else$TBD$endif$\\
-	&  \\
+$if(presenter)$$if(chinese)$主讲人$else$Presenter$endif$: $presenter$ &$endif$
+$if(capacity)$$if(chinese)$参与人数$else$Capacity$endif$: $capacity$ \\$endif$
+$if(email)$$if(chinese)$邮箱$else$E-mail$endif$: \texttt{$email$} &$endif$
+$if(web)$$if(chinese)$网站$else$Web$endif$: \href{http://$web$}{\tt $web$} \\$endif$
+$if(classhours)$$if(chinese)$课程时间$else$Class Hours$endif$: $classhours$ &$endif$
+$if(location)$$if(chinese)$课程地点$else$Location$endif$: $location$ \\$endif$
+$if(officehours)$$if(chinese)$答疑时间$else$Office Hours$endif$: $officehours$  &$endif$
+$if(office)$$if(chinese)$办公室$else$Office$endif$: $office$ \\$endif$
 	\hline
 	\end{tabular*}
-	
+
 \vspace{2mm}
-	
+
 
 
 $body$

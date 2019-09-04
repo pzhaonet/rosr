@@ -13,12 +13,13 @@ rmd_template <- function(...,
                          template_name,
                          keep_tex = TRUE,
                          citation_package = "natbib",
+                         latex_engine = "xelatex",
                          md_extensions = c(
                            "-autolink_bare_uris", # disables automatic links, needed for plain email in \correspondence
                            "-auto_identifiers"    # disables \hypertarget commands
                          )) {
   template <- system.file("rmarkdown", "templates", template_name, "resources", "template.tex", package = "rosr")
-  fmt <- rmarkdown::pdf_document(..., template = template, keep_tex = keep_tex)
+  fmt <- rmarkdown::pdf_document(..., template = template, keep_tex = keep_tex, latex_engine = latex_engine)
   fmt$inherits <- "pdf_document"
   fmt
 }

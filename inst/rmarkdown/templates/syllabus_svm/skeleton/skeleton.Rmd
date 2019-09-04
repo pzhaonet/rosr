@@ -8,6 +8,8 @@ title: "POSC 0000: A Class with an R Markdown Syllabus"
 author: Steven V. Miller (adapted by Peng Zhao)
 date: "Fall 2016"
 
+presenter: Dr. Peng Zhao
+capacity: 25 seats
 email: "svmille@clemson.edu"
 web: "svmiller.com/teaching"
 officehours: "W 09:00-11:30 a.m."
@@ -19,7 +21,8 @@ fontfamily: mathpazo
 fontsize: 11pt
 header-includes:
    - \linespread{1.05}
-
+chinese: false
+indentfirst: false
 # bibliography: rosr.bib
 # biblio-style: apalike
 # link-citations: yes
