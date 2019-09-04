@@ -14,7 +14,7 @@ email: "svmille@clemson.edu"
 web: "svmiller.com/teaching"
 officehours: "W 09:00-11:30 a.m."
 office: "230A Brackett Hall"
-classroom: "*online*"
+location: "*online*"
 classhours: "TR 02:00-03:45 p.m."
 
 fontfamily: mathpazo
@@ -23,10 +23,6 @@ header-includes:
    - \linespread{1.05}
 chinese: false
 indentfirst: false
-# bibliography: rosr.bib
-# biblio-style: apalike
-# link-citations: yes
-
 ---
 
 
