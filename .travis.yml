@@ -1,0 +1,9 @@
+language: r
+sudo: false
+cache:
+  packages: yes
+
+ addons:
+   apt:
+     packages:
+       - libmagick++-dev
