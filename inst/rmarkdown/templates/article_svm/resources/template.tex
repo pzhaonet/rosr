@@ -1,4 +1,4 @@
-\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{article}
+\documentclass[$if(indentfirst)$indent,$endif$$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 $if(revise-package)$
 \usepackage{$revise-package$}
 $endif$
@@ -220,7 +220,7 @@ $if(abstract)$
 
 $if(keywords)$
 
-\vskip 8.5pt \noindent \emph{Keywords}: $keywords$ \par
+\vskip 8.5pt \noindent \emph{$if(chinese)$关键词$else$Keywords$endif$}: $keywords$ \par
 
     \hbox{\vrule height .2pt width 39.14pc}
 

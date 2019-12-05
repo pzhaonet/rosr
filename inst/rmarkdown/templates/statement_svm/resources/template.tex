@@ -1,8 +1,12 @@
-\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{article}
+\documentclass[$if(indentfirst)$indent,$endif$$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 
 $if(revise-package)$
 \usepackage{$revise-package$}
 $endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
 
 \usepackage[$geometry$]{geometry}
 \newcommand*{\authorfont}{\fontfamily{phv}\selectfont}

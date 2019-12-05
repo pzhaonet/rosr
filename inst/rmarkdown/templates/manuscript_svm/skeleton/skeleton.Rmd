@@ -20,6 +20,10 @@ bibliography: rosr.bib
 biblio-style: apsr
 indent: yes
 colorlinks: true
+
+# revise-package: changes # enable this line for using `~~~old text~~~ +++new text+++` to revise and `render_revised()` to render. invalid for ctexart.
+# header-includes:  # enable this line for using `~~text~~` to break through texts.
+#    - \usepackage{ulem}
 ---
 
 
@@ -35,7 +39,7 @@ colorlinks: true
 
 # Introduction
 
-This template intends to ~~~show how to~~~ +++work with+++ R markdown briefly. 
+This template intends to show how to work with R markdown briefly. 
 
 
 # Methods

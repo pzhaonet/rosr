@@ -27,10 +27,10 @@
 \name{$author$}{}
 % \title{Resumé title}                               % optional, remove / comment the line if not wanted
 \address{$from_street$}{$from_town$}{}
-\phone[mobile]{$from_mobile$}
-\phone[fixed]{$from_phone$}
-\phone[fax]{$from_fax$}
-\email{$from_email$}
+$if(from_mobile)$\phone[mobile]{$from_mobile$}$endif$
+$if(from_phone)$\phone[fixed]{$from_phone$}$endif$
+$if(from_fax)$\phone[fax]{$from_fax$}$endif$
+$if(from_email)$\email{$from_email$}$endif$
 %\homepage{http://dapengde.com/cv}                         % optional, remove / comment the line if not wanted
 %\extrainfo{additional information}                 % optional, remove / comment the line if not wanted
 %\photo[64pt][0.4pt]{picture}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
@@ -46,7 +46,9 @@
 %\usepackage{multibib}
 %\newcites{book,misc}{{Books},{Others}}
 
-
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+  
 %%%%%%%%%%%%%%
 \usepackage{longtable,booktabs,fancyvrb}
 

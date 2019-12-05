@@ -2,6 +2,9 @@
 output: 
   bookdown::pdf_book:
     base_format: rosr::syllabus_svm # for using bookdown features like \@ref()
+    # latex_engine: xelatex # enable this line for Chinese
+# documentclass: ctexart # enable this line for Chinese
+# indentfirst: false # enable this line for Chinese indent
 geometry: margin=1in
 
 title: "POSC 0000: A Class with an R Markdown Syllabus"
@@ -19,10 +22,11 @@ classhours: "TR 02:00-03:45 p.m."
 
 fontfamily: mathpazo
 fontsize: 11pt
-header-includes:
+
+# revise-package: changes # enable this line for using `~~~old text~~~ +++new text+++` to revise and `render_revised()` to render. invalid for ctexart.
+header-includes:  
+   # - \usepackage{ulem} # enable this line for using `~~text~~` to break through texts.
    - \linespread{1.05}
-chinese: false
-indentfirst: false
 ---
 
 

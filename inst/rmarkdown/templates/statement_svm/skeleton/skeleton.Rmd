@@ -2,6 +2,9 @@
 output: 
   bookdown::pdf_book:
     base_format: rosr::statement_svm # for using bookdown features like \@ref()
+    # latex_engine: xelatex # enable this line for Chinese
+# documentclass: ctexart # enable this line for Chinese
+# indentfirst: false # enable this line for Chinese indent
 geometry: margin=1in
 bibliography: rosr.bib
 biblio-style: apalike
@@ -14,14 +17,17 @@ email: "pzhao@pzhao.net"
 
 fontfamily: mathpazo
 fontsize: 11pt
+
+# revise-package: changes # enable this line for using `~~~old text~~~ +++new text+++` to revise and `render_revised()` to render. invalid for ctexart.
 header-includes:
+   # - \usepackage{ulem}   # enable this line for using `~~text~~` to break through texts.
    - \linespread{1.05}
 ---
 
 
 # Research Statement
 
-This is ~~~ your ~~~ +++ my +++ research statement.
+This is your research statement.
 
 ## Topic 1
 

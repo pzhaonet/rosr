@@ -1,7 +1,11 @@
-\documentclass[$if(indentfirst)$indent,$endif$$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$if(chinese)$ctexart$else$article$endif$}
+\documentclass[$if(indentfirst)$indent,$endif$$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 $if(revise-package)$
 \usepackage{$revise-package$}
 $endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
 
 \usepackage[$geometry$]{geometry}
 \newcommand*{\authorfont}{\fontfamily{phv}\selectfont}
@@ -168,14 +172,14 @@ $endif$
 
 	\noindent \begin{tabular*}{\textwidth}{ @{\extracolsep{\fill}} lr @{\extracolsep{\fill}}}
 
-$if(presenter)$$if(chinese)$主讲人$else$Presenter$endif$: $presenter$ &$endif$
-$if(capacity)$$if(chinese)$参与人数$else$Capacity$endif$: $capacity$$endif$ \\
-$if(email)$$if(chinese)$邮箱$else$E-mail$endif$: \texttt{$email$} &$endif$
-$if(web)$$if(chinese)$网站$else$Web$endif$: \href{http://$web$}{\tt $web$}$endif$ \\
-$if(classhours)$$if(chinese)$课程时间$else$Class Hours$endif$: $classhours$ &$endif$
-$if(location)$$if(chinese)$课程地点$else$Location$endif$: $location$$endif$ \\
-$if(officehours)$$if(chinese)$答疑时间$else$Office Hours$endif$: $officehours$  &$endif$
-$if(office)$$if(chinese)$办公室$else$Office$endif$: $office$$endif$ \\
+$if(presenter)$$if(documentclass)$主讲人$else$Presenter$endif$: $presenter$ &$endif$
+$if(capacity)$$if(documentclass)$参与人数$else$Capacity$endif$: $capacity$$endif$ \\
+$if(email)$$if(documentclass)$邮箱$else$E-mail$endif$: \texttt{$email$} &$endif$
+$if(web)$$if(documentclass)$网站$else$Web$endif$: \href{http://$web$}{\tt $web$}$endif$ \\
+$if(classhours)$$if(documentclass)$课程时间$else$Class Hours$endif$: $classhours$ &$endif$
+$if(location)$$if(documentclass)$课程地点$else$Location$endif$: $location$$endif$ \\
+$if(officehours)$$if(documentclass)$答疑时间$else$Office Hours$endif$: $officehours$  &$endif$
+$if(office)$$if(documentclass)$办公室$else$Office$endif$: $office$$endif$ \\
 	\hline
 	\end{tabular*}
 
