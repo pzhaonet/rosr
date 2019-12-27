@@ -1,4 +1,4 @@
-\documentclass[$if(fontsize)$$fontsize$,$endif$$if(handout)$handout,$endif$$if(beamer)$ignorenonframetext,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+\documentclass[$if(fontsize)$$fontsize$,$endif$$if(handout)$handout,$endif$$if(beamer)$ignorenonframetext,$endif$$if(aspectratio)$aspectratio=$aspectratio$,$endif$$if(notes)$notes=$notes$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 $if(theme)$
 \usetheme{$theme$}
 $endif$
@@ -18,7 +18,7 @@ $endif$
 \setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
 \usepackage{amssymb,amsmath}
-\usepackage{ctex}
+$if(chinese)$\usepackage{ctex}$endif$
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
 \usepackage{lmodern}
@@ -144,9 +144,42 @@ $if(subtitle)$
 \subtitle{$subtitle$}
 $endif$
 $if(author)$
-\author{$for(author)$$author$$sep$ \and $endfor$}
+\author[$for(shortauthor)$$shortauthor$$sep$ \and $endfor$]{$for(author)$$author$$sep$ \and $endfor$}
 $endif$
+$if(institute)$
+\institute{$for(institute)$$institute$$sep$ \and $endfor$}
+$endif$
+$if(institute)$
 \date{$date$}
+$endif$
+
+$if(title_graphic)$
+% \titlegraphic{\includegraphics[width=$title_graphic_width$\paperwidth]{$title_graphic$}}
+\titlegraphic{$for(title_graphic)$\includegraphics[width=$title_graphic_width$\paperwidth]{$title_graphic$}~$endfor$}
+$endif$
+
+$if(pagenumber)$
+%\setbeamertemplate{footline}[page number]
+\defbeamertemplate*{footline}{shadow theme}
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fil,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}$if(total_pagenumber_left)$\insertframenumber\,/\,$if(total_pagenumber)$$total_pagenumber$$else$\inserttotalframenumber$endif$$endif$\hfill\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle\hfill$if(total_pagenumber_right)$\insertframenumber\,/\,$if(total_pagenumber)$$total_pagenumber$$else$\inserttotalframenumber$endif$$endif$%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+$endif$
+
+$if(navigation_empty)$
+\beamertemplatenavigationsymbolsempty
+$endif$
+
+$if(note_page)$
+\setbeamertemplate{note page}[$note_page$]
+$endif$
 
 \begin{document}
 $if(title)$
@@ -158,36 +191,13 @@ $include-before$
 
 $endfor$
 $if(toc)$
-\begin{frame}
-\tableofcontents[hideallsubsections]
+\begin{frame}{Outline}
+\tableofcontents
 \end{frame}
-
 $endif$
 $body$
 
-$if(natbib)$
-$if(bibliography)$
-$if(biblio-title)$
-$if(book-class)$
-\renewcommand\bibname{$biblio-title$}
-$else$
-\renewcommand\refname{$biblio-title$}
-$endif$
-$endif$
-\begin{frame}[allowframebreaks]{$biblio-title$}
-\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
-\end{frame}
-
-$endif$
-$endif$
-$if(biblatex)$
-\begin{frame}[allowframebreaks]{$biblio-title$}
-\printbibliography[heading=none]
-\end{frame}
-
-$endif$
 $for(include-after)$
 $include-after$
-
 $endfor$
 \end{document}
