@@ -1,14 +1,4 @@
 --- 
-output: 
-  bookdown::pdf_book:
-    base_format: rosr::letter_moderncv # for using bookdown features like \@ref()
-# options
-font: sffamily # "sffamily", "calligra"
-fontsize: "12pt" # "10pt", "11pt", "12pt"
-bodysize: normalsize # "tiny", "scriptsize", "footnotesize", "small", "normalsize", "large", "Large", "LARGE", "huge", "Huge"
-style: "classic" # "casual", "classic", "oldstyle", "banking" 
-theme: "blue" # "blue", "orange", "green", "red", "purple", "grey", "black"
-
 # head and tail
 author: "Jim Green"
 date: "25 June, 2017"
@@ -23,6 +13,17 @@ to_affiliation: "CCTV"
 to_street: "Zhongguancun Str"
 to_town: "100000 Beijing, China"
 closing: "Yours faithfully,"
+
+output: 
+  bookdown::pdf_book:
+    base_format: rosr::letter_moderncv # for using bookdown features like \@ref()
+# options
+font: sffamily # "sffamily", "calligra"
+fontsize: "12pt" # "10pt", "11pt", "12pt"
+bodysize: normalsize # "tiny", "scriptsize", "footnotesize", "small", "normalsize", "large", "Large", "LARGE", "huge", "Huge"
+style: "classic" # "casual", "classic", "oldstyle", "banking" 
+theme: "blue" # "blue", "orange", "green", "red", "purple", "grey", "black"
+
 ---
 
 Would you like to write a mail with markdown or R markdown in a traditional mail?

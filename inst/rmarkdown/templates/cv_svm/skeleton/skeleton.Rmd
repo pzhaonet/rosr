@@ -1,10 +1,4 @@
 ---
-output: 
-  bookdown::pdf_book:
-    base_format: rosr::cv_svm # for using bookdown features like \@ref()
-
-geometry: margin=1in
-
 title: "CV"
 author: William Sealy Gosset
 
@@ -14,13 +8,16 @@ fontawesome: yes
 email: guinness@consumer-care.net
 # github: svmiller
 # twitter: stevenvmiller
-#osf: "Enter 5 digit osf string here"
+# osf: "Enter 5 digit osf string here"
 phone: "+353 1 408 4800"
 web: guinness.com
+keywords: R Markdown, academic CV, template
 updated: no
 
-keywords: R Markdown, academic CV, template
-
+output: 
+  bookdown::pdf_book:
+    base_format: rosr::cv_svm # for using bookdown features like \@ref()
+geometry: margin=1in
 fontfamily: mathpazo
 fontfamilyoptions: sc, osf
 fontsize: 11pt

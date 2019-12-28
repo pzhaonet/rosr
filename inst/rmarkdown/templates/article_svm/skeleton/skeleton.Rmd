@@ -1,12 +1,5 @@
 ---
-output: 
-  bookdown::pdf_book:
-    base_format: rosr::article_svm # for using bookdown features like \@ref()
-    # latex_engine: xelatex # enable this line for Chinese
-# documentclass: ctexart # enable this line for Chinese
-# indentfirst: false # enable this line for Chinese indent
-
-title: Template for your article using RMarkdown
+title: Template for your article using R Markdown
 thanks: "This template is originally from Prof. Steve Miller (svmille@clemson.edu) and adapted to rosr by Dr. Peng Zhao. A detailed replication file is available on <http://github.com/svmiller>. "
 author:
 - name: Steven V. Miller
@@ -23,12 +16,18 @@ fontsize: 11pt
 bibliography: rosr.bib
 biblio-style: apsr
 endnote: no
-
+output: 
+  bookdown::html_document2: default
+  bookdown::word_document2: default
+  bookdown::pdf_book:
+    base_format: rosr::article_svm # for using bookdown features like \@ref()
+    keep_tex: yes
+    # latex_engine: xelatex # enable this line for Chinese
+# documentclass: ctexart # enable this line for Chinese
+# indentfirst: false # enable this line for Chinese indent
 # revise-package: changes # enable this line for using `~~~old text~~~ +++new text+++` to revise and `render_revised()` to render. invalid for ctexart.
 # header-includes:  # enable this line for using `~~text~~` to break through texts.
-#    - \usepackage{ulem}
 ---
-
 
 ```{r md-hint, include=FALSE}
 # Markdown Syntax
@@ -39,54 +38,124 @@ endnote: no
 # - TABLE   : knitr::kable(), \@ref(tab:tab1)
 ```
 
-
 # Introduction
 
 This template intends to show how to work with R markdown briefly. 
 
+# Basic
 
-# Methods
+## Fonts
 
-## Set up
+*italic*
 
-Firstly, we save the working directory. switch off the warning and message display in a manuscript if you want. 
+**bold**
 
-```{r wd}
-oldwd <- getwd()
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE) 
+`code`
+
+Superscript: mc^2^
+
+Subscript: CO~2~
+
+## Hyperlinks
+
+[Hyperlink](https://openr.pzhao.org)
+
+## Items
+
+1. Numbered items
+    1. Lower levels
+    1. Lower levels
+1. Numbered items
+
+- Unnumbered items
+  - Lower levels
+  - Lower levels
+- Unnumbered items
+
+## Code block
+
+```
+x = 1
 ```
 
-## Bib
+## Quates
 
-Now let's create a bib file.
+> quote 
 
-```{r bib, results='hide'}
+
+## Footnotes
+
+A footnotes can be created like this: footnote^[This is a footnote 1].
+
+Or like this: another footnote[^footnote2]
+
+[^footnote2]: This is another footnote.
+
+# Intermediate
+
+## Images
+
+An image can be inserted directly like this:
+
+```
+![](https://openr.netlify.com/img/banners/logo-rosr.png)
+```
+
+If you need customized images, especially cross-reference for the image like Figure \@ref(fig:image1), use R scripts like this:
+
+(ref:image1) This is a ***caption*** of an image.
+```{r image1, fig.cap='(ref:image1)'}
+if(file.exists('logo-rosr.png')){
+  knitr::include_graphics('logo-rosr.png')  # insert a local image
+} else{
+  plot(1) # plot an image.
+}
+```
+
+## Tables
+
+Insert a table with basic markdown like this:
+
+column1     column2
+----------- ----------
+row1        row1
+row2        row2
+
+or use scripts like Table \@ref(tab:tab1):
+
+(ref:tab1) This is the caption of a *table*.
+```{r tab1, fig.cap="(ref:tab1)"}
+knitr::kable(head(cars), caption = "(ref:tab1)")
+```
+
+## Equations
+
+An inline equation is like this:$F(x) = \int^a_b \frac{1}{3}x^3$.
+
+An display equation can be inserted like this:
+
+$$F(x) = \int^a_b \frac{1}{3}x^3$$
+
+If an equation should be numbered or cross-referred, insert it like Equation \@ref(eq:eqtest) for pdf and html:
+
+\begin{align} 
+F(x) = \int^a_b \frac{1}{3}x^3
+  (\#eq:eqtest)
+\end{align}
+
+and Equation (@eq-mc) for Word.
+
+(@eq-mc) $F(x) = \int^a_b \frac{1}{3}x^3$
+
+## Citation
+
+Suppose you have a .bib file named 'rosr.bib' (See `bibliography: ` in the YALM header). If not, you can create a bib file like this.
+
+```{r bib}
 knitr::write_bib(c('knitr', 'rosr'), file = 'rosr.bib')
 ```
 
-
-## Load
-
-If you are using  to the rosr project, you can set the root dir as the project directory You can syc the bibliography and load data or functions ((uncomment the following codes).
- 
-```{r set}
-# knitr::opts_knit$set(root.dir = dirname(dirname(oldwd)))
-# require('rosr')
-```
-
-```{r load}
-# file.copy('bib/rosr.bib', oldwd)
-# source('R/rosr.R')
-```
-
-## Cite
-
-Now we can cite something like this: 
-
-The 'knitr' package [@R-knitr] and the 'rosr' package [@R-rosr] are useful.
-
-
-# Results and Discussions
+Now insert citations like this: @R-knitr, [@R-knitr;@R-rosr].
 
 ## Numbers
 
@@ -96,41 +165,47 @@ temperature <- 17
 
 We can use the results. For example, the mean temperature is `r temperature` degree.
 
-If this file is in a rosr project, we can use the results loaded from the `R/rosr.R`.
+# Advanced
 
-## Tables
+The codes in this section are all commented, for non-'rosr' project. But if you are organizing a 'rosr' project with, you can share resources easily between manuscripts, slides, posters, and so on. In a 'rosr' project, images are placed in the 'image' folder, bibliography in the 'bib' folder, R scripts in the 'R' folder, and equations in the 'equation' folder. If this is in a 'rosr' project, uncomment the following codes and try.
 
-We could insert a table as in Table \@ref(tab:tab-lab).
+Firstly, we save the working directory. switch off the warning and message display in a manuscript if you want. 
 
-```{r tab-lab}
-knitr::kable(head(airquality), booktabs = TRUE, caption = 'Air quality data.')
+```{r wd}
+# oldwd <- getwd()
+# knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE) 
 ```
 
-## Figures
+set the root dir as the project directory, syc the bibliography and load data or functions within the project. 
 
-Plot the data in a diagram as shown in Fig. \@ref(fig:fig-lab).
-
-```{r fig-lab, fig.cap='Air quality data.'}
-plot(airquality)
+```{r set}
+# knitr::opts_knit$set(root.dir = dirname(dirname(oldwd)))
 ```
 
-If this file is in a rosr project, We could insert an image like this:
+```{r load}
+# file.copy('bib/rosr.bib', oldwd)
+# source('R/rosr.R')
+```
+
+
+Load the 'rosr' package, 
+
+```{r rosr}
+# require('rosr')
+```
+
+and an image could be inserted like this:
 
 ```{r img-lab, fig.cap='Insert an image.'}
 # fig('rosr_R.png')
 ```
 
-## Equations
-
-$$ E = mc^2 $$
-
-if in a rosr project, we can Use the `rosr::eq()` function to insert an equation. 
+and an equation could be inserted like this: 
 
 ```{r, results='asis'}
 # eqs <- 'equation/rosr-eq.Rmd'
 # eq(eqs, label = 'sd')
 ```
-
 
 # References
 \setlength{\parindent}{-0.2in}

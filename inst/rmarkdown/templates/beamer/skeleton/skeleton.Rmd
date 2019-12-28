@@ -28,7 +28,6 @@ note_page: plain # default compress plain
 header-includes:
   - \newcommand{\ct}{\tiny \textcolor{gray}}
 output: 
-  bookdown::html_document2: default
   bookdown::beamer_presentation2: 
     template: beamer_rosr.tex
     keep_tex: yes
@@ -46,6 +45,7 @@ output:
     colortheme: default # available color theme: default	albatross	beaver	beetle	crane	dolphin	dove	fly	lily	orchid	rose	seagull	seahorse	whale	wolverine.
     fonttheme: professionalfonts # available font themes: default professionalfonts serif structurebold structureitalicserif structuresmallcapsserif (see <http://deic.uab.es/~iblanes/beamer_gallery/index_by_font.html>)
   bookdown::word_document2: default
+  bookdown::html_document2: default
 always_allow_html: yes
 bibliography: rosr.bib
 biblio-title: References

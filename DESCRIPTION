@@ -26,6 +26,6 @@ License: GPL-3 | file LICENSE
 URL: https://github.com/pzhaonet/rosr
 BugReports: https://github.com/pzhaonet/rosr/issues
 SystemRequirements: Pandoc (>= 2.2.3)
-RoxygenNote: 7.0.0
+RoxygenNote: 7.0.2
 NeedsCompilation: no
 LazyData: true

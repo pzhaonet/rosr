@@ -1,16 +1,7 @@
 ---
-output: 
-  bookdown::pdf_book:
-    base_format: rosr::syllabus_svm # for using bookdown features like \@ref()
-    # latex_engine: xelatex # enable this line for Chinese
-# documentclass: ctexart # enable this line for Chinese
-# indentfirst: false # enable this line for Chinese indent
-geometry: margin=1in
-
 title: "POSC 0000: A Class with an R Markdown Syllabus"
 author: Steven V. Miller (adapted by Peng Zhao)
 date: "Fall 2016"
-
 presenter: Dr. Peng Zhao
 capacity: 25 seats
 email: "svmille@clemson.edu"
@@ -20,6 +11,15 @@ office: "230A Brackett Hall"
 location: "*online*"
 classhours: "TR 02:00-03:45 p.m."
 
+output: 
+  bookdown::html_document2: default
+  bookdown::word_document2: default
+  bookdown::pdf_book:
+    base_format: rosr::syllabus_svm # for using bookdown features like \@ref()
+    # latex_engine: xelatex # enable this line for Chinese
+# documentclass: ctexart # enable this line for Chinese
+# indentfirst: false # enable this line for Chinese indent
+geometry: margin=1in
 fontfamily: mathpazo
 fontsize: 11pt
 
