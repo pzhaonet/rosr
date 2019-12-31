@@ -51,7 +51,7 @@ sub_projects <- function(){
   c("Rproj", "bib", "data", "image", "R",
     "equation", "rpkg", 'mindmap',
     "manuscript", "poster", "slide",
-    "book", "website")
+    "book", "website", "unclassified")
 }
 
 #' Display available templates in a list
@@ -104,15 +104,17 @@ templates <- function(){
   package <- rep(names(templates_list), sapply(templates_list, length))
   template <- unlist(template_ls())
   template_df <- data.frame(package = package, templates = template, stringsAsFactors = FALSE, row.names = NULL)
-  template_df$sub_project <- template_df$templates
+  template_df$sub_project <- 'unclassified'
   template_df$sub_project[template_df$package == 'rticles'] <- 'manuscript'
-  template_df$sub_project[template_df$package == 'xaringan' | template_df$package == 'rosr'] <- 'slide'
+  template_df$sub_project[template_df$package == 'xaringan'] <- 'slide'
   template_df$sub_project[template_df$package == 'drposter'] <- 'poster'
   template_df$sub_project[template_df$package == 'bookdownplus'] <- 'book'
   template_df$sub_project[grepl('poster', template_df$templates)] <- 'poster'
   template_df$sub_project[template_df$package == 'blogdown'] <- 'website'
-  template_df$sub_project[template_df$package == 'pagedown' &
-                            template_df$template == 'html-paged'] <- 'book'
+  template_df$sub_project[template_df$package == 'pagedown' & template_df$template %in% c('html-paged', 'thesis-paged')] <- 'book'
+  template_df$sub_project[template_df$package == 'pagedown' & template_df$template == 'jss-paged'] <- 'manuscript'
+  template_df$sub_project[template_df$package == 'pagedown' & template_df$template %in% c('poster-jacobs', 'poster-relaxed')] <- 'poster'
+  template_df$sub_project[template_df$package == 'rosr' & template_df$templates %in% c('beamer', 'powerpoint')] <- 'slide'
+  template_df$sub_project[template_df$package == 'rosr' & template_df$templates %in% c('manuscript_svm', 'article_svm')] <- 'manuscript'
   return(template_df)
 }
-

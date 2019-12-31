@@ -20,21 +20,30 @@ rosr_ui <- function(){
       fluidPage(
         wellPanel(
           fluidRow(
-            column(2, checkboxGroupInput('demo', 'demo',
-                                         choices = sub_projects()[1:8],
-                                         selected = sub_projects()[1:8]),
-                   actionLink("demo_all","Select All")),
+            column(2,
+                   checkboxGroupInput('demo', 'demo',
+                                      choices = sub_projects()[1:8],
+                                      selected = sub_projects()[1:8]),
+                   actionLink("demo_all","Select All"),
+                   hr(),
+                   checkboxGroupInput('unclassified', 'unclassified',
+                                      choices = templates()$templates[templates()$sub_project == 'unclassified'],
+                                      selected = 'letter_moderncv'),
+                   actionLink("unclassified_all","Select All")
+            ),
             column(2, checkboxGroupInput('manuscript', 'manuscript',
                                          choices = templates()$templates[templates()$sub_project == 'manuscript'],
                                          selected = 'copernicus_article'),
                    actionLink("manuscript_all","Select All")),
-            column(2, checkboxGroupInput('poster', 'poster',
-                                         choices = templates()$templates[templates()$sub_project == 'poster'],
-                                         selected = 'drposter'),
-                   actionLink("poster_all","Select All")),
-            column(2, checkboxGroupInput('slide', 'slide',
-                                         choices = templates()$templates[templates()$sub_project == 'slide'],
-                                         selected = 'xaringan'),
+            column(2,
+                   checkboxGroupInput('poster', 'poster',
+                                      choices = templates()$templates[templates()$sub_project == 'poster'],
+                                      selected = 'drposter'),
+                   actionLink("poster_all","Select All"),
+                   hr(),
+                   checkboxGroupInput('slide', 'slide',
+                                      choices = templates()$templates[templates()$sub_project == 'slide'],
+                                      selected = 'xaringan'),
                    actionLink("slide_all","Select All")),
             column(2, checkboxGroupInput('book', 'book',
                                          choices = templates()$templates[templates()$sub_project == 'book'],
@@ -85,9 +94,9 @@ rosr_ui <- function(){
 rosr_server <- function(input, output, session) {
   template_df <- templates()
   install_packages()
-  sub_project <- sub_projects()[9:13]
+  sub_project <- sub_projects()[9:14]
   sub_project_label <- sub_project
-  template_selected <- c('copernicus_article', 'drposter', 'xaringan', 'demo', 'yihui/hugo-lithium')
+  template_selected <- c('copernicus_article', 'drposter', 'xaringan', 'demo', 'yihui/hugo-lithium', 'letter_moderncv')
 
   observeEvent(input$create, {
     # Create a Progress object
@@ -104,7 +113,7 @@ rosr_server <- function(input, output, session) {
 
     # create manuscript, slide, poster
     for (j in 2:4){
-      if(length(input[[sub_project[j - 1]]] != 0))
+      if(length(input[[sub_project[j - 1]]]) != 0)
         for(i in input[[sub_project[j - 1]]]){
           progress$inc(1/pr, detail = paste0(sub_project[j - 1], ' ', i, '...'))
           create_rmd(to = file.path(input$path, sub_project[j - 1]),
@@ -115,7 +124,7 @@ rosr_server <- function(input, output, session) {
     }
 
     # create book
-    if(length(input$book != 0))
+    if(length(input$book) != 0)
       for(i in input$book) {
         progress$inc(1/pr, detail = paste0('book ', i, '...'))
         create_book(to = file.path(input$path, 'book'),
@@ -126,7 +135,7 @@ rosr_server <- function(input, output, session) {
       }
 
     # create website
-    if(length(input$website != 0))
+    if(length(input$website) != 0)
       for(i in input$website){
         progress$inc(1/pr, detail = paste0('website ', i, '...'))
         create_website(to = file.path(input$path, 'website'),
@@ -138,11 +147,21 @@ rosr_server <- function(input, output, session) {
                      theme = input$text_website)
     }
 
+    # create unclassified documents
+    if(length(input$unclassified) != 0)
+      for(i in input[['unclassified']]){
+        progress$inc(1/pr, detail = paste0('uncassified ', i, '...'))
+        create_rmd(to = file.path(input$path, 'unclassified'),
+                   template = i,
+                   package = template_df$package[template_df$templates == i],
+                   if_render =  input$if_render == 'Yep')
+      }
+
     progress$inc(1/pr, detail = 'Done!')
   }
   )
 
-  # function as a shor version of updateCheckboxGroupInput()
+  # function as a short version of updateCheckboxGroupInput()
   select_all <- function(sub_project = 'manuscript', all = FALSE){
     sub_project_lab <- sub_project
     if(sub_project == 'demo'){
@@ -155,7 +174,7 @@ rosr_server <- function(input, output, session) {
     } else{
       myselected <- NULL
     }
-      return(
+    return(
       updateCheckboxGroupInput(session, sub_project, sub_project_lab,
                                choices = mychoices,
                                selected = myselected)
@@ -177,6 +196,7 @@ rosr_server <- function(input, output, session) {
   observe({observe_select_all(sub_project = 'poster')})
   observe({observe_select_all(sub_project = 'book')})
   observe({observe_select_all(sub_project = 'website')})
+  observe({observe_select_all(sub_project = 'unclassified')})
   observe({
     if(input$select_all == 0) return(NULL)
     else if (input$select_all%%2 == 0) {
@@ -187,12 +207,12 @@ rosr_server <- function(input, output, session) {
   })
   observe({
     if(input$select_suggested == 0) return(NULL)
-      select_all('demo', all = TRUE)
-      for(k in 1:5)
-        updateCheckboxGroupInput(session, sub_project[k], sub_project_label[k],
+    select_all('demo', all = TRUE)
+    for(k in 1:6)
+      updateCheckboxGroupInput(session, sub_project[k], sub_project_label[k],
                                choices = template_of_sub_project(sub_project = sub_project[k]),
                                selected = template_selected[k])
-  #   }
+    #   }
   })
 }
 
