@@ -1,6 +1,7 @@
 #' Render a revised .rmd into pdf
 #'
 #' @param file the path of the .rmd file
+#' @param clear logical. clear the intermediate files
 #'
 #' @return a pdf file in revison mode.
 #' @export
@@ -18,7 +19,7 @@ render_revised <- function(file, clear = TRUE){
     filetxt <- c(filetxt[1:(loc-1)], 'revise-package: changes',  filetxt[loc:length(filetxt)])
   }
   writeLines(filetxt, newfile, useBytes = TRUE)
-  rmarkdown::render(newfile)
+  if (!rmarkdown::pandoc_available()) return("Pandoc is required.") else rmarkdown::render(newfile)
   if(clear){
     clear_files <- dir(path = dirname(file), basename(gsub('(\\.[^.]+)$', '_revised', file)), full.names = TRUE)
     unlink(clear_files[clear_files != paste0(gsub('(\\.[^.]+)$', '_revised', file), '.pdf')], recursive = TRUE)

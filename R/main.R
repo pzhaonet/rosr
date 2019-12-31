@@ -87,7 +87,8 @@ create_eq <- function(to = getwd(), if_render = TRUE){
   create_dir(to)
   r_template <- paste0(system.file(package = 'rosr'), '/skeleton/equation/rosr-eq.Rmd')
   file.copy(r_template, paste0(to, '/rosr-eq.Rmd'))
-  if(if_render) rmarkdown::render(paste0(to, '/rosr-eq.Rmd'))
+  if(if_render) {
+    if (!rmarkdown::pandoc_available()) return("Pandoc is required.") else rmarkdown::render(paste0(to, '/rosr-eq.Rmd'))}
 }
 
 #' Create a demo R package
@@ -209,10 +210,9 @@ create_rmd <- function(to = 'manuscript',
                         sub_project = 'slide',
                         rmd_dir = rmd_dir)
 
-  if(if_render)
-    rmarkdown::render(rmd_new,
-                      quiet = TRUE,
-                      encoding = 'UTF-8')
+  if(if_render){
+    if (!rmarkdown::pandoc_available()) return("Pandoc is required.") else rmarkdown::render(rmd_new, quiet = TRUE, encoding = 'UTF-8')
+  }
 }
 
 #' Create a demo bookdown project

@@ -18,9 +18,13 @@ rmd_template <- function(...,
                            "-auto_identifiers"    # disables \hypertarget commands
                          )) {
   template <- system.file("rmarkdown", "templates", template_name, "resources", "template.tex", package = "rosr")
-  fmt <- rmarkdown::pdf_document(..., template = template, keep_tex = keep_tex)
-  fmt$inherits <- "pdf_document"
-  fmt
+  if (!rmarkdown::pandoc_available()) {
+    return("Pandoc is required.")
+  } else {
+    fmt <- rmarkdown::pdf_document(..., template = template, keep_tex = keep_tex)
+    fmt$inherits <- "pdf_document"
+    return(fmt)
+  }
 }
 
 #' @rdname rmd_template
