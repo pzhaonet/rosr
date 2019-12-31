@@ -61,6 +61,6 @@ letter_moderncv <- function(...){
 
 #' @rdname rmd_template
 #' @export
-beamer_zh <- function(...){
-  rmd_template(template_name = "beamer_zh", ...)
+beamer <- function(...){
+  rmd_template(template_name = "beamer", ...)
 }

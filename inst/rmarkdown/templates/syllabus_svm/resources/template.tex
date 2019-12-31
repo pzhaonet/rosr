@@ -1,4 +1,5 @@
 \documentclass[$if(indentfirst)$indent,$endif$$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+\usepackage{amsmath} % equations
 $if(revise-package)$
 \usepackage{$revise-package$}
 $endif$
@@ -172,14 +173,26 @@ $endif$
 
 	\noindent \begin{tabular*}{\textwidth}{ @{\extracolsep{\fill}} lr @{\extracolsep{\fill}}}
 
-$if(presenter)$$if(documentclass)$主讲人$else$Presenter$endif$: $presenter$ &$endif$
-$if(capacity)$$if(documentclass)$参与人数$else$Capacity$endif$: $capacity$$endif$ \\
-$if(email)$$if(documentclass)$邮箱$else$E-mail$endif$: \texttt{$email$} &$endif$
-$if(web)$$if(documentclass)$网站$else$Web$endif$: \href{http://$web$}{\tt $web$}$endif$ \\
-$if(classhours)$$if(documentclass)$课程时间$else$Class Hours$endif$: $classhours$ &$endif$
-$if(location)$$if(documentclass)$课程地点$else$Location$endif$: $location$$endif$ \\
-$if(officehours)$$if(documentclass)$答疑时间$else$Office Hours$endif$: $officehours$  &$endif$
-$if(office)$$if(documentclass)$办公室$else$Office$endif$: $office$$endif$ \\
+$if(header_zh)$
+	$if(presenter)$主讲人: $presenter$ &$endif$
+	$if(capacity)$参与人数: $capacity$$endif$ \\
+	$if(email)$邮箱: \texttt{$email$} &$endif$
+	$if(web)$网站: \href{http://$web$}{\tt $web$}$endif$ \\
+	$if(classhours)$课程时间: $classhours$ &$endif$
+	$if(location)$课程地点: $location$$endif$ \\
+	$if(officehours)$答疑时间: $officehours$  &$endif$
+	$if(office)$办公室: $office$$endif$ \\
+$else$
+	$if(presenter)$Presenter: $presenter$ &$endif$
+	$if(capacity)$Capacity: $capacity$$endif$ \\
+	$if(email)$E-mail: \texttt{$email$} &$endif$
+	$if(web)$Web: \href{http://$web$}{\tt $web$}$endif$ \\
+	$if(classhours)$Class Hours: $classhours$ &$endif$
+	$if(location)$Location: $location$$endif$ \\
+	$if(officehours)$Office Hours: $officehours$  &$endif$
+	$if(office)$Office: $office$$endif$ \\
+$endif$
+
 	\hline
 	\end{tabular*}
 

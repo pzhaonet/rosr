@@ -20,10 +20,10 @@ indent: yes
 colorlinks: true
 
 output: 
-  bookdown::html_document2: default
-  bookdown::word_document2: default
   bookdown::pdf_book:
     base_format: rosr::manuscript_svm # for using bookdown features like \@ref()
+  bookdown::html_document2: default
+  bookdown::word_document2: default
 
 # revise-package: changes # enable this line for using `~~~old text~~~ +++new text+++` to revise and `render_revised()` to render. invalid for ctexart.
 # header-includes:  # enable this line for using `~~text~~` to break through texts.

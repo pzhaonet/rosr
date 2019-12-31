@@ -287,6 +287,7 @@ Hidden texts.
 
 }
 
+
 ## In a 'rosr' project
 
 The codes in this section are all commented, for non-'rosr' project. But if you are organizing a 'rosr' project with, you can share resources easily between manuscripts, slides, posters, and so on. In a 'rosr' project, images are placed in the 'image' folder, bibliography in the 'bib' folder, R scripts in the 'R' folder, and equations in the 'equation' folder. If this is in a 'rosr' project, uncomment the following codes and try.
@@ -297,7 +298,7 @@ Firstly, we save the working directory. switch off the warning and message displ
 
 ```{r wd}
 # oldwd <- getwd()
-# knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE) 
+# knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
 set the root dir as the project directory, syc the bibliography and load data or functions within the project. 
@@ -321,9 +322,11 @@ If you load the 'rosr' package,
 
 an image could be inserted like this:
 
-```{r img-lab, fig.cap='Insert an image.'}
+```{r img-lab, fig.cap='Insert an image.', out.height="50%", out.width="50%"}
 # fig('rosr_R.png')
 ```
+
+---
 
 and an equation could be inserted like this: 
 

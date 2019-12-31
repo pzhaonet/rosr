@@ -5,11 +5,11 @@ date: "5 April, 2019"
 email: "pzhao@pzhao.net"
 
 output: 
-  bookdown::html_document2: default
-  bookdown::word_document2: default
   bookdown::pdf_book:
     base_format: rosr::statement_svm # for using bookdown features like \@ref()
     # latex_engine: xelatex # enable this line for Chinese
+  bookdown::html_document2: default
+  bookdown::word_document2: default
 # documentclass: ctexart # enable this line for Chinese
 # indentfirst: false # enable this line for Chinese indent
 geometry: margin=1in
