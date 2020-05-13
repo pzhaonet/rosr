@@ -1,6 +1,6 @@
 Package: rosr
-Version: 0.0.9
-Date: 2019-12-31
+Version: 0.0.10.1
+Date: 2020-05-12
 Title: Create Reproducible Research Projects
 Authors@R: c(
     person("Peng", "Zhao", role = c("aut", "cre"), email = "pzhao@pzhao.net")
@@ -26,6 +26,6 @@ License: GPL-3 | file LICENSE
 URL: https://github.com/pzhaonet/rosr
 BugReports: https://github.com/pzhaonet/rosr/issues
 SystemRequirements: pandoc (>= 2.0; https://pandoc.org)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 NeedsCompilation: no
 LazyData: true

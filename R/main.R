@@ -114,7 +114,7 @@ create_rpkg <- function(to = getwd()){
 #' @export
 #'
 #' @examples
-#' create_mindmap(tempdir())
+#' # create_mindmap(tempdir())
 create_mindmap <- function(to = getwd(), if_save = FALSE){
   create_dir(to)
   tree_widget <- mindr::tree(show_files = TRUE)

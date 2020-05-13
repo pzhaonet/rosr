@@ -7,8 +7,8 @@
 #' @export
 #'
 #' @examples
-#' rosr::create_rmd(template = 'statement_svm', package = 'rosr')
-#' rosr::render_revised('manuscript/statement_svm/statement_svm.Rmd')
+#' # rosr::create_rmd(template = 'statement_svm', package = 'rosr')
+#' # rosr::render_revised('manuscript/statement_svm/statement_svm.Rmd')
 render_revised <- function(file, clear = TRUE){
   newfile <- gsub('(\\.[^.]+)$', '_revised\\1', file)
   filetxt <- readLines(file, encoding = 'UTF-8')
