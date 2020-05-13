@@ -27,7 +27,7 @@ install_packages <- function(server = c('cran', 'github')){
   # from CRAN
   if('github' %in% server){
     # from github
-    pkgs_github <- c('bbucior/drposter')
+    pkgs_github <- c('pzhaonet/drposter')
     lapply(pkgs_github,
            function(x){
              if(system.file(package = strsplit(x, '/')[[1]][2]) == '') {
