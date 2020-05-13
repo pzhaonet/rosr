@@ -83,7 +83,7 @@ knitr::opts_knit$set(root.dir = dirname(dirname(oldwd)))
 require('rosr')
 ```
 
-\introduction
+# Introduction
 
 This template comes from the R 'rticles' package and modified by Peng Zhao. It intends to show how to cross refer other files in a 'rosr' project, rather than to show how to use the 'rticles' template.
 
@@ -152,7 +152,7 @@ eqs <- 'equation/rosr-eq.Rmd'
 eq(eqs, label = 'sd')
 ```
 
-\conclusions
+# Conclusions
 
 The conclusion goes here.
 You can modify the section name with  `\conclusions[modified heading if necessary]`.
