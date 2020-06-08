@@ -5,6 +5,7 @@ output:
   drposter::drposter_poster:
     self_contained: false
     css: custom.css
+    export_pdf: false
 ---
 
 ```{r md-hint, include=FALSE}

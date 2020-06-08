@@ -23,7 +23,7 @@ rosr_ui <- function(){
             column(2,
                    checkboxGroupInput('demo', 'demo',
                                       choices = sub_projects()[1:8],
-                                      selected = sub_projects()[1:8]),
+                                      selected = sub_projects()[1:7]),
                    actionLink("demo_all","Select All"),
                    hr(),
                    checkboxGroupInput('unclassified', 'unclassified',
@@ -165,7 +165,7 @@ rosr_server <- function(input, output, session) {
   select_all <- function(sub_project = 'manuscript', all = FALSE){
     sub_project_lab <- sub_project
     if(sub_project == 'demo'){
-      mychoices <- sub_projects()[1:8]
+      mychoices <- sub_projects()[1:7]
     } else {
       mychoices <- template_of_sub_project(sub_project = sub_project)
     }
