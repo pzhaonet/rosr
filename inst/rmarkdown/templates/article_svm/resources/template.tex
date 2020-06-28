@@ -1,4 +1,17 @@
 \documentclass[$if(indentfirst)$indent,$endif$$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+
+% fix the Pandoc 2.8 error "! LaTeX Error: Environment cslreferences undefined."
+% see <https://github.com/rstudio/rmarkdown/issues/1649>
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+$endif$
+
+
 \usepackage{amsmath} % equations
 $if(revise-package)$
 \usepackage{$revise-package$}

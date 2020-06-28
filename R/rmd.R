@@ -1,4 +1,4 @@
-#' rosr Rmd template
+#' rosr pdf template
 #'
 #' @param template_name the template name.
 #' @inheritParams rmarkdown::pdf_document
@@ -9,7 +9,7 @@
 #' @return An R Markdown output format.
 #' @details statement_svm, article_svm, cv_svm, syllabus_svm, manuscript_svm are adapted from \url{https://github.com/svmiller/svm-r-markdown-templates}.
 #' @export
-rmd_template <- function(...,
+pdf_template <- function(...,
                          template_name,
                          keep_tex = TRUE,
                          citation_package = "natbib",
@@ -27,44 +27,44 @@ rmd_template <- function(...,
   }
 }
 
-#' @rdname rmd_template
+#' @rdname pdf_template
 #' @export
 statement_svm <- function(...){
-  rmd_template(template_name = "statement_svm", ...)
+  pdf_template(template_name = "statement_svm", ...)
 }
 
-#' @rdname rmd_template
+#' @rdname pdf_template
 #' @export
 article_svm <- function(...){
-  rmd_template(template_name = "article_svm", ...)
+  pdf_template(template_name = "article_svm", ...)
 }
 
-#' @rdname rmd_template
+#' @rdname pdf_template
 #' @export
 cv_svm <- function(...){
-  rmd_template(template_name = "cv_svm", ...)
+  pdf_template(template_name = "cv_svm", ...)
 }
 
-#' @rdname rmd_template
+#' @rdname pdf_template
 #' @export
 syllabus_svm <- function(...){
-  rmd_template(template_name = "syllabus_svm", ...)
+  pdf_template(template_name = "syllabus_svm", ...)
 }
 
-#' @rdname rmd_template
+#' @rdname pdf_template
 #' @export
 manuscript_svm <- function(...){
-  rmd_template(template_name = "manuscript_svm", ...)
+  pdf_template(template_name = "manuscript_svm", ...)
 }
 
-#' @rdname rmd_template
+#' @rdname pdf_template
 #' @export
 letter_moderncv <- function(...){
-  rmd_template(template_name = "letter_moderncv", ...)
+  pdf_template(template_name = "letter_moderncv", ...)
 }
 
-#' @rdname rmd_template
+#' @rdname pdf_template
 #' @export
 beamer <- function(...){
-  rmd_template(template_name = "beamer", ...)
+  pdf_template(template_name = "beamer", ...)
 }
