@@ -12,7 +12,7 @@
 # stable version (not yet):
 # install.packages("rosr")
 # or development version:
-remote::install_github("pzhaonet/rosr")
+remotes::install_github("pzhaonet/rosr")
 ```
 
 ### For non-R users
